@@ -1,5 +1,3 @@
-package BLL;
-
 public class AdminBLL {
     public static void createAdmin(Admin admin) {
         Repository.getRepository().getAdmins().put(admin.getId(), admin);

@@ -17,27 +17,32 @@
                         <Image url="@../../../../../../../../../Users/franc/Downloads/dentalcare.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="255.0" layoutY="16.0" text="Menu Cliente">
+                <Label layoutX="255.0" layoutY="16.0" text="Menu Admin">
                     <font>
                         <Font size="27.0" />
                     </font>
                 </Label>
-            <Button layoutX="84.0" layoutY="151.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Marcar consulta">
+                <Button layoutX="84.0" layoutY="107.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Registar admin">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button layoutX="84.0" layoutY="231.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Listar donos de empresa">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button layoutX="84.0" layoutY="167.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Listar clientes">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Button>
+                <Button layoutX="558.0" layoutY="460.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" text="Terminar sessão" />
+            <Button layoutX="84.0" layoutY="294.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Listar consultas">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="84.0" layoutY="303.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Pagar consultas">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="84.0" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Listar clínicas">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
-            <Button layoutX="558.0" layoutY="460.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" text="Terminar sessão" />
             </children>
         </AnchorPane>
     </left>

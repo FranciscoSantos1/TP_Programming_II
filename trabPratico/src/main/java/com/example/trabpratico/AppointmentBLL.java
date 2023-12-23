@@ -1,5 +1,3 @@
-package BLL;
-
 import java.io.Serializable;
 
 public class AppointmentBLL {
