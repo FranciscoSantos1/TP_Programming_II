@@ -29,11 +29,12 @@ public class LoginController {
     private TextField usernameField;
 
     @FXML
-    public void exit(ActionEvent event) {
-        System.exit(0);
-    }
+    public void registerButtonOnAction(MouseEvent event){
 
-    public void loginButtonOnAction(ActionEvent event) throws IOException {
+
+    }
+    @FXML
+    public void loginButtonOnAction(javafx.event.ActionEvent actionEvent) throws IOException {
         String user = usernameField.getText();
         String password = passwordField.getText();
         boolean found = false;
@@ -43,20 +44,18 @@ public class LoginController {
         for(Customer c : repo.getCustomers().values()){
             if(user.equals(c.getUsername()) && password.equals(c.getPassword())){
                 found = true;Parent root;
-                root = FXMLLoader.load(getClass().getResource("customerPage.fxml"));
+                root = FXMLLoader.load(getClass().getResource("customerMenu.fxml"));
                 Scene regCena = new Scene(root);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 stage.setScene(regCena);
                 stage.setTitle("Customer Menu");
                 stage.show();
             }
         }
-
-
     }
-
-    public void registerButtonOnAction(MouseEvent event){
-
+    @FXML
+    public void exit(javafx.event.ActionEvent actionEvent) {
+        System.exit(0);
 
     }
 }
