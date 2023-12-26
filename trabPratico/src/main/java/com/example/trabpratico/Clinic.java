@@ -1,26 +1,48 @@
 import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Clinic implements Serializable {
+    private String name;
     private Company company;
     private String address;
     private String location;
+    private String NIF;
     private String appointmentType;
     private ArrayList<Employee> employees;
-    private String type;
+    private Map<Service, Double> services;
 
     public Clinic() {
         this.employees = new ArrayList<>();
     }
 
-    public Clinic(Company company, String address, String location, String appointmentType, String type) {
+    public Clinic(String name, Company company, String address, String location, String appointmentType, String NIF ) {
+        this.name = name;
         this.company = company;
         this.address = address;
         this.location = location;
         this.appointmentType = appointmentType;
+        this.NIF = NIF;
         this.employees = new ArrayList<>();
-        this.type = type;
+        this.services = new HashMap<>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getNIF() {
+        return NIF;
+    }
+
+    public void setNIF(String NIF) {
+        this.NIF = NIF;
     }
 
     public Company getCompany() {
@@ -63,11 +85,12 @@ public class Clinic implements Serializable {
         this.employees = employees;
     }
 
-    public String getType() {
-        return type;
+    public Map<Service, Double> getServices() {
+        return services;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setServices(Map<Service, Double> services) {
+        this.services = services;
     }
+
 }

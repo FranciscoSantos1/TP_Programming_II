@@ -9,12 +9,12 @@ public abstract class User implements Serializable {
     protected String fullName;
     protected int phoneNumber;
     protected String address;
-    protected int NIF;
-    protected int CCNumber;
+    protected String NIF;
+    protected String CCNumber;
 
     public User(){}
 
-    public User(int id, String username, String password, String email, String fullName, int phoneNumber, String address, int NIF, int CCNumber) {
+    public User(int id, String username, String password, String email, String fullName, int phoneNumber, String address, String NIF, String CCNumber) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -82,19 +82,19 @@ public abstract class User implements Serializable {
         this.address = address;
     }
 
-    public int getNIF() {
+    public String getNIF() {
         return NIF;
     }
 
-    public void setNIF(int NIF) {
+    public void setNIF(String NIF) {
         this.NIF = NIF;
     }
 
-    public int getCCNumber() {
+    public String getCCNumber() {
         return CCNumber;
     }
 
-    public void setCCNumber(int CCNumber) {
+    public void setCCNumber(String CCNumber) {
         this.CCNumber = CCNumber;
     }
 }

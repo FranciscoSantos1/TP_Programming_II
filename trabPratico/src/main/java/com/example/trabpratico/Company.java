@@ -7,7 +7,7 @@ public class Company implements Serializable {
     private String name;
     private String address;
     private String location;
-    private int NIF;
+    private String NIF;
     private int phoneNumber;
     private List<Clinic> clinics;
 
@@ -47,11 +47,11 @@ public class Company implements Serializable {
         this.location = location;
     }
 
-    public int getNIF() {
+    public String getNIF() {
         return NIF;
     }
 
-    public void setNIF(int NIF) {
+    public void setNIF(String NIF) {
         this.NIF = NIF;
     }
 

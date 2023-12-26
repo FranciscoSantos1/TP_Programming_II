@@ -1,19 +1,20 @@
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 public class Appointment implements Serializable {
+    private int idConsulta;
     private Date appointmentDate;
     private String employee;
     private String clinicName;
     private double totalValue;
     private Customer customer;
     private AppointmentState state;
-    private int idConsulta;
     private Service services;
 
     public Appointment(){};
 
-    public Appointment(Date appointmentDate, String employee, String clinicName, double totalValue, Customer customer, AppointmentState state, int idConsulta) {
+    public Appointment(Date appointmentDate, String employee, String clinicName, double totalValue, Customer customer, AppointmentState state, int idConsulta, Service services) {
         this.appointmentDate = appointmentDate;
         this.employee = employee;
         this.clinicName = clinicName;
@@ -21,6 +22,7 @@ public class Appointment implements Serializable {
         this.customer = customer;
         this.state = state;
         this.idConsulta = idConsulta;
+        this.services = services;
     }
 
     public String getAppointmentDate() {
@@ -77,5 +79,13 @@ public class Appointment implements Serializable {
 
     public void setIdConsulta(int idConsulta) {
         this.idConsulta = idConsulta;
+    }
+
+    public Service getServices() {
+        return services;
+    }
+
+    public void setServices(Service services) {
+        this.services = services;
     }
 }

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
-public class Employee extends User{
+public class Employee extends User {
     private EmployeeType type;
     private ArrayList<Appointment> appointments;
-    private Company company;
+    private Clinic clinic;
 
     public Employee(EmployeeType type) {
         this.type = type;
@@ -26,11 +26,18 @@ public class Employee extends User{
         this.appointments = appointments;
     }
 
-    public Company getCompany() {
-        return company;
+    public Clinic getClinic() {
+        return clinic;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setClinic(Clinic clinic) {
+        this.clinic = clinic;
+    }
+
+    public void printClinicData(){
+        System.out.println("Nome: " + clinic.getName());
+        System.out.println("NIF: " + clinic.getNIF());
+        System.out.println("Morada: " + clinic.getAddress());
+        System.out.println("Localizacao: " + clinic.getLocation());
     }
 }
