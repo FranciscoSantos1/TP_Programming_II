@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterController">
    <left>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #93CAED;" BorderPane.alignment="CENTER">
          <children>
@@ -25,7 +25,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="usernameField" layoutX="22.0" layoutY="90.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" />
-                <Button fx:id="loginButton" layoutX="139.0" layoutY="450.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="148.0" text="Registar">
+                <Button fx:id="registerButton2" layoutX="139.0" layoutY="450.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="148.0" text="Registar">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -43,20 +43,20 @@
                </font>
             </Label>
             <TextField fx:id="accountType" layoutX="302.0" layoutY="90.0" prefHeight="30.0" prefWidth="220.0" />
-            <TextField fx:id="accountType1" layoutX="23.0" layoutY="271.0" prefHeight="30.0" prefWidth="505.0" />
+            <TextField fx:id="addressField" layoutX="23.0" layoutY="271.0" prefHeight="30.0" prefWidth="505.0" />
             <Label layoutX="24.0" layoutY="250.0" text="Morada">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <PasswordField fx:id="passwordField1" layoutX="22.0" layoutY="329.0" prefHeight="30.0" prefWidth="220.0" />
-            <PasswordField fx:id="passwordField11" layoutX="255.0" layoutY="329.0" prefHeight="30.0" prefWidth="274.0" />
+            <PasswordField fx:id="NIFField" layoutX="22.0" layoutY="329.0" prefHeight="30.0" prefWidth="220.0" />
+            <PasswordField fx:id="phoneNumberField" layoutX="255.0" layoutY="329.0" prefHeight="30.0" prefWidth="274.0" />
             <Label layoutX="24.0" layoutY="308.0" text="NIF">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="accountType11" layoutX="23.0" layoutY="380.0" prefHeight="30.0" prefWidth="505.0" />
+            <TextField fx:id="emailField" layoutX="23.0" layoutY="380.0" prefHeight="30.0" prefWidth="505.0" />
             <Label layoutX="253.0" layoutY="308.0" text="Telemovel">
                <font>
                   <Font size="15.0" />
@@ -67,7 +67,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button layoutX="643.0" layoutY="468.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="57.0" text="Voltar" />
+            <Button fx:id="backButton" layoutX="643.0" layoutY="468.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="57.0" text="Voltar" />
             <Label layoutX="24.0" layoutY="69.0" text="Username">
                <font>
                   <Font size="15.0" />
