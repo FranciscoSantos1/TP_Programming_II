@@ -13,30 +13,28 @@ import java.util.Optional;
 public class customerMenuController {
 
     @FXML
-    void logout(ActionEvent event) {
-        try {
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmação de término de sessão");
-            alert.setHeaderText("Confirma sair?");
-            alert.setContentText("Deseja terminar sessão?");
+    void goBack(javafx.event.ActionEvent ActionEvent) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.getButtonTypes().remove(ButtonType.OK);
+        alert.getButtonTypes().add(ButtonType.YES);
+        alert.getButtonTypes().add(ButtonType.NO);
+        alert.setTitle("Closing warning");
+        alert.setHeaderText("Tem a certeza que deseja sair?");
 
-            Optional<ButtonType> result = alert.showAndWait();
-            if (result.get() == ButtonType.OK){
-                try {
-                    Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
-                    Scene regCena = new Scene (root);
-                    Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                    stage.setScene(regCena);
-                    stage.setTitle("Iniciar Sessão");
-                    stage.show();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            } else {
-                // ... user chose CANCEL or closed the dialog
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get().equals(ButtonType.YES)){
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/login.fxml"));
+                Scene regCena = new Scene(root);
+                Stage stage = (Stage) ((Node) ActionEvent.getSource()).getScene().getWindow();
+                stage.setScene(regCena);
+                stage.setTitle("Login");
+                stage.show();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+        } else {
+           return;
         }
     }
 

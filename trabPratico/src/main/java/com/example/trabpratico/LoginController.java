@@ -46,7 +46,6 @@ public class LoginController {
             String user = usernameField.getText();
             String password = passwordField.getText();
             boolean found = false;
-            SessionData sd = new SessionData();
 
             Repository repo = Repository.getRepository();
 
@@ -66,7 +65,6 @@ public class LoginController {
             for (CompanyOwner co : repo.getCompanyOwners().values()) {
                 if (usernameField.getText().equalsIgnoreCase(co.getUsername()) && passwordField.getText().equals(co.getPassword())) {
                     found = true;
-                    //                sd.owner = co;
                     System.out.println("Login com Sucesso!");
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/companyOwnerMenu.fxml"));
                     Scene regCena = new Scene(root);
@@ -79,7 +77,6 @@ public class LoginController {
             for (Admin a : repo.getAdmins().values()) {
                 if (usernameField.getText().equalsIgnoreCase(a.getUsername()) && passwordField.getText().equals(a.getPassword())) {
                     found = true;
-                    sd.admin = a;
                     System.out.println("Login com Sucesso!");
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/adminMenu.fxml"));
                     Scene regCena = new Scene(root);
@@ -92,7 +89,6 @@ public class LoginController {
             for (Employee e : repo.getEmployees().values()) {
                 if (usernameField.getText().equalsIgnoreCase(e.getUsername()) && passwordField.getText().equals(e.getPassword())) {
                     found = true;
-                    sd.employee = e;
                     System.out.println("Login com Sucesso!");
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/EmployeeMenu.fxml"));
                     Scene regCena = new Scene(root);

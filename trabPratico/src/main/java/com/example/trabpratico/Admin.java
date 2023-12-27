@@ -7,7 +7,7 @@ public class Admin extends User{
         this.password = password;
     }
 
-    public Admin(int id, String username, String password, String email, String fullName, int phoneNumber, String address, String NIF, String CCNumber) {
+    public Admin(int id, String username, String password, String email, String fullName, String phoneNumber, String address, String NIF, String CCNumber) {
         super(id, username, password, email, fullName, phoneNumber, address, NIF, CCNumber);
     }
 }

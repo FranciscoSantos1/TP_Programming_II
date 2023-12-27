@@ -24,12 +24,24 @@ public class Main extends Application {
         Repository repo;
         Repository.deserialize("src/main/resources/data/users.repo");
         repo = Repository.getRepository();
+        User u = new Customer();
+
+        //DADOS DE TESTE
+        u.setUsername("c1");
+        u.setPassword("c1");
+        u.setNIF("123456789");
+        u.setAddress("Rua do customer1");
+        u.setPhoneNumber("937707486");
+        u.setFullName("customer1");
+        CustomerBLL.createCustomer((Customer) u);
+
+
         if (repo.getAdmins().isEmpty()) {
             Admin a1 = new Admin();
             a1.setUsername("Administrador");
             a1.setAddress("Rua do Administrador");
             a1.setNIF("251320561");
-            a1.setPhoneNumber(937707486);
+            a1.setPhoneNumber("937707486");
             a1.setUsername("admin");
             a1.setPassword("admin");
             AdminBLL.createAdmin(a1);

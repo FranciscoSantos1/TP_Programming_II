@@ -7,14 +7,14 @@ public abstract class User implements Serializable {
     protected String password;
     protected String email;
     protected String fullName;
-    protected int phoneNumber;
+    protected String phoneNumber;
     protected String address;
     protected String NIF;
     protected String CCNumber;
 
     public User(){}
 
-    public User(int id, String username, String password, String email, String fullName, int phoneNumber, String address, String NIF, String CCNumber) {
+    public User(int id, String username, String password, String email, String fullName, String phoneNumber, String address, String NIF, String CCNumber) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -66,11 +66,11 @@ public abstract class User implements Serializable {
         this.fullName = fullName;
     }
 
-    public int getPhoneNumber() {
+    public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 

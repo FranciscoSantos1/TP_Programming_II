@@ -11,14 +11,14 @@ public class    Repository implements Serializable {
     private Map<String, CompanyOwner> companyOwnersMap = new HashMap<>();       // Mapa de <NIF, CompanyOwner>
     private Map<CompanyOwner, Company> companiesMap = new HashMap<>();          // Mapa de <CompanyOwner, Company>
     private Map<String, Company> companiesMapNIF = new HashMap<>();             // Mapa de <NIF, Company>
-    private Map<String, Company> companiesLocation = new HashMap<>();         // Mapa de <Location, Company>
+    private Map<String, Company> companiesLocation = new HashMap<>();           // Mapa de <Location, Company>
     private Map<Integer, Admin> adminsMap = new HashMap<>();                    // Mapa de <idAdmin, Admin>
     private Map<String, Employee> employeesMap= new HashMap<>();                // Mapa de <NIF, Employee>
     private Map<Integer, Service> services = new HashMap<>();                   // Mapa de <ServiceId, Service>
     private Map<Integer, Appointment> appointmentsMap = new HashMap<>();        // Mapa de <AppointmentId, Appointment>
-    private Map<Company, Clinic> CompanieClinicsMap = new HashMap<>();                  // Mapa de <Company, Clinic>
+    private Map<Company, Clinic> CompanieClinicsMap = new HashMap<>();          // Mapa de <Company, Clinic>
     protected Map<Clinic, Employee> employeesClinicMap = new HashMap<>();       // Mapa de <Clinic, Employee>
-    public Map<String, Clinic> clinicsMap = new HashMap<>();
+    public Map<String, Clinic> clinicsMap = new HashMap<>();                    // Mapa de <NIF, Clinic>
 
 
     public Repository (){};
