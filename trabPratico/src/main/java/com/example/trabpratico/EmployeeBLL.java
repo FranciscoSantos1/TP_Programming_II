@@ -6,6 +6,6 @@ public class EmployeeBLL {
         Repository.getRepository().getEmployeesClinicMap().put(employee.getClinic(), employee);
 
         System.out.println("Funcionário criado com sucesso!!!");
-        Repository.getRepository().serialize("src\\main\\resources\\data\\users.repo");
+        Repository.getRepository().serialize("users.repo");
     }
 }

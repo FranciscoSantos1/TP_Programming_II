@@ -1,16 +1,34 @@
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.util.Optional;
 
-public class customerMenuController {
+public class CompanyOwnerMenuController {
+
+    @FXML
+    private Button createClinic;
+
+    @FXML
+    private Button createCompany;
+
+    @FXML
+    private Button createEmployee;
+
+    @FXML
+    private Button goBack;
+
+    @FXML
+    private Button listCompanies;
+
+    @FXML
+    private Button addService;
 
     @FXML
     void goBack(javafx.event.ActionEvent ActionEvent) {
@@ -34,18 +52,18 @@ public class customerMenuController {
                 e.printStackTrace();
             }
         } else {
-           return;
+            return;
         }
     }
 
     @FXML
-    void makeAnAppointment(javafx.event.ActionEvent event) {
+    public void createClinic(javafx.event.ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/makeAnAppointment.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/createClinic.fxml"));
             Scene regCena = new Scene (root);
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
-            stage.setTitle("Marcar Consulta");
+            stage.setTitle("Criar Clínica");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -53,13 +71,13 @@ public class customerMenuController {
     }
 
     @FXML
-    void ClinicsList(ActionEvent event) {
+    public void createCompany(javafx.event.ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/clinicsList.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/createCompany.fxml"));
             Scene regCena = new Scene (root);
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
-            stage.setTitle("Lista de Clínicas");
+            stage.setTitle("Criar Empresa");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -67,13 +85,41 @@ public class customerMenuController {
     }
 
     @FXML
-    void customerPayments(ActionEvent event) {
+    public void CreateEmployee(javafx.event.ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/customerPayments.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/createEmployee.fxml"));
             Scene regCena = new Scene (root);
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
-            stage.setTitle("Lista de Consultas");
+            stage.setTitle("Criar Funcionário");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void addService(javafx.event.ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/addService.fxml"));
+            Scene regCena = new Scene (root);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("Adicionar Serviço");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void listCompanies(javafx.event.ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/listCompanies.fxml"));
+            Scene regCena = new Scene (root);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("Lista de Empresas");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();

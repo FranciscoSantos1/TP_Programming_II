@@ -73,7 +73,7 @@ public class RegisterController {
     void register(javafx.event.ActionEvent event) {
         if (checkNIF(event) && checkPhoneNumber(event) && checkUsername(event) && checkPassword(event) && checkUserType(event)) {
             if (UserTypeChoiceBox.getValue().equals("Customer")) {
-                Customer c1 = new Customer();
+                User c1 = new Customer();
                 c1.setAddress(addressField.getText());
                 c1.setEmail(emailField.getText());
                 c1.setFullName(fullNameField.getText());
@@ -82,10 +82,10 @@ public class RegisterController {
                 c1.setUsername(usernameField.getText());
                 c1.setPassword(passwordField.getText());
 
-                CustomerBLL.createCustomer(c1);
+                CustomerBLL.createCustomer((Customer) c1);
 
             } else if (UserTypeChoiceBox.getValue().equals("CompanyOwner")){
-                CompanyOwner co1 = new CompanyOwner();
+                User co1 = new CompanyOwner();
                 co1.setAddress(addressField.getText());
                 co1.setEmail(emailField.getText());
                 co1.setFullName(fullNameField.getText());
@@ -94,7 +94,7 @@ public class RegisterController {
                 co1.setUsername(usernameField.getText());
                 co1.setPassword(passwordField.getText());
 
-                CompanyOwnerBLL.createCompanyOwner(co1);
+                CompanyOwnerBLL.createCompanyOwner((CompanyOwner) co1);
 
             }
 

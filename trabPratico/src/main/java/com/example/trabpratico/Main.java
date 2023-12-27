@@ -22,9 +22,12 @@ public class Main extends Application {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Repository repo;
-        Repository.deserialize("src/main/resources/data/users.repo");
+        Repository.deserialize("users.repo");
         repo = Repository.getRepository();
         User u = new Customer();
+        User u2 = new CompanyOwner();
+
+
 
         //DADOS DE TESTE
         u.setUsername("c1");
@@ -34,6 +37,15 @@ public class Main extends Application {
         u.setPhoneNumber("937707486");
         u.setFullName("customer1");
         CustomerBLL.createCustomer((Customer) u);
+
+        u2.setUsername("co1");
+        u2.setPassword("co1");
+        u2.setNIF("123456789");
+        u2.setAddress("Rua do companyOwner1");
+        u2.setPhoneNumber("937707486");
+        u2.setFullName("companyOwner1");
+        CompanyOwnerBLL.createCompanyOwner((CompanyOwner) u2);
+
 
 
         if (repo.getAdmins().isEmpty()) {
@@ -47,6 +59,7 @@ public class Main extends Application {
             AdminBLL.createAdmin(a1);
         }
         launch();
+
         System.out.println("Dados dos Clientes: ");
 
         for (Customer aux : repo.getCustomers().values()) {
@@ -84,7 +97,6 @@ public class Main extends Application {
 
         System.out.println("--------- FIM DOS EMPRESÁRIOS ---------");
 
-// Similar loops for Admins, Employees, Services, Appointments
 
         System.out.println("\n----------------------------------------");
         System.out.println("------| Dados dos ADMINS |---------");

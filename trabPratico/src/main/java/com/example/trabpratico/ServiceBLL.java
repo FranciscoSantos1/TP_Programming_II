@@ -4,6 +4,6 @@ public class ServiceBLL {
         Repository.getRepository().getServices().put(service.getServiceId(), service);
         Repository.getRepository().getClinicsMap().get(clinic.getNIF()).getServices().put(service, service.getServicePrice());
         System.out.println("Serviço criado com sucesso!!!");
-        Repository.getRepository().serialize("src\\main\\resources\\data\\users.repo");
+        Repository.getRepository().serialize("users.repo");
     }
 }

@@ -6,7 +6,7 @@ public class AppointmentBLL {
         Repository.getRepository().getAppointments().put(appointment.getIdConsulta(), appointment);
         Repository.getRepository().getCustomers().get(customer.getNIF()).getAppointments().add(appointment);
         System.out.println("Appointment created successfully!");
-        Repository.getRepository().serialize("src\\main\\resources\\data\\data.dat");
+        Repository.getRepository().serialize("users.repo");
     }
 
 }

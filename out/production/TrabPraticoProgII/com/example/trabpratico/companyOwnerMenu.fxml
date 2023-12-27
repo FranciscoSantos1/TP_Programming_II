@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CompanyOwnerMenuController">
     <left>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #93CAED;" BorderPane.alignment="CENTER">
             <children>
@@ -22,22 +22,32 @@
                         <Font size="27.0" />
                     </font>
                 </Label>
-                <Button layoutX="84.0" layoutY="109.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Criar empresa">
+                <Button fx:id="createCompany" layoutX="84.0" layoutY="109.0" mnemonicParsing="false" onAction="#createCompany" prefHeight="50.0" prefWidth="200.0" text="Criar empresa">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="84.0" layoutY="237.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Listar empresas">
+                <Button fx:id="createClinic" layoutX="84.0" layoutY="237.0" mnemonicParsing="false" onAction="#createClinic" prefHeight="50.0" prefWidth="200.0" text="Criar clinica">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="84.0" layoutY="172.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Criar funcionário">
+                <Button fx:id="createEmployee" layoutX="84.0" layoutY="172.0" mnemonicParsing="false" onAction="#CreateEmployee" prefHeight="50.0" prefWidth="200.0" text="Criar funcionário">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </Button>
-                <Button layoutX="558.0" layoutY="460.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="128.0" text="Terminar sessão" />
+                <Button fx:id="goBack" layoutX="558.0" layoutY="460.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="128.0" text="Terminar sessão" />
+            <Button fx:id="listCompanies" layoutX="84.0" layoutY="304.0" mnemonicParsing="false" onAction="#listCompanies" prefHeight="50.0" prefWidth="200.0" text="Listar empresas">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="addService" layoutX="84.0" layoutY="365.0" mnemonicParsing="false" onAction="#addService" prefHeight="50.0" prefWidth="200.0" text="Adicionar Serviço">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
     </left>

@@ -72,26 +72,20 @@ public class    Repository implements Serializable {
         }
     }
 
-    public static Repository deserialize(String filename)
-            throws ClassNotFoundException, IOException {
-        Repository repo = null;
+    public static void deserialize(String filename) {
         try{
             FileInputStream fileIn = new FileInputStream(filename);
             ObjectInputStream in = new ObjectInputStream(fileIn);
             repo = (Repository) in.readObject();
             in.close();
             fileIn.close();
+            System.out.println("Serialized data is loaded from " + filename);
         }
         catch(IOException ex){
-            System.out.println("Error: " + ex.getMessage());
-            return null;
+            System.out.println("ErrorDeserialize: " + ex.getMessage());
+        } catch(ClassNotFoundException ex){
+            System.out.println("Repository class not found. " + ex.getMessage());
         }
-        catch(ClassNotFoundException ex){
-            System.out.println("Repositorio class not found. " + " "
-                    + ex.getMessage());
-            return null;
-        }
-        return repo;
     }
 
 }

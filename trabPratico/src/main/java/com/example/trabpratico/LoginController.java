@@ -45,25 +45,28 @@ public class LoginController {
         try {
             String user = usernameField.getText();
             String password = passwordField.getText();
+            SessionData sd = new SessionData();
             boolean found = false;
 
             Repository repo = Repository.getRepository();
 
             for (Customer c : repo.getCustomers().values()) {
                 if (user.equals(c.getUsername()) && password.equals(c.getPassword())) {
+                    sd.customer = c;
                     found = true;
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/customerMenu.fxml"));
                     Scene regCena = new Scene(root);
                     Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                     stage.setScene(regCena);
-                    stage.setTitle("Customer Menu");
+                    stage.setTitle("Menu Clientes");
                     stage.show();
                 }
             }
 
             for (CompanyOwner co : repo.getCompanyOwners().values()) {
                 if (usernameField.getText().equalsIgnoreCase(co.getUsername()) && passwordField.getText().equals(co.getPassword())) {
+                    sd.companyOwner = co;
                     found = true;
                     System.out.println("Login com Sucesso!");
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/companyOwnerMenu.fxml"));
@@ -76,6 +79,7 @@ public class LoginController {
             }
             for (Admin a : repo.getAdmins().values()) {
                 if (usernameField.getText().equalsIgnoreCase(a.getUsername()) && passwordField.getText().equals(a.getPassword())) {
+                    sd.admin = a;
                     found = true;
                     System.out.println("Login com Sucesso!");
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/adminMenu.fxml"));
@@ -88,6 +92,7 @@ public class LoginController {
             }
             for (Employee e : repo.getEmployees().values()) {
                 if (usernameField.getText().equalsIgnoreCase(e.getUsername()) && passwordField.getText().equals(e.getPassword())) {
+                    sd.employee = e;
                     found = true;
                     System.out.println("Login com Sucesso!");
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/EmployeeMenu.fxml"));

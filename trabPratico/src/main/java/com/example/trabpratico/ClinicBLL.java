@@ -3,7 +3,7 @@ public class ClinicBLL {
         Repository.getRepository().getCompanieClinicsMap().put(clinic.getCompany(), clinic);
         Repository.getRepository().getClinicsMap().put(clinic.getNIF(), clinic);
         System.out.println("Clinic created successfully!");
-        Repository.getRepository().serialize("src\\main\\resources\\data\\users.repo");
+        Repository.getRepository().serialize("users.repo");
 
     }
 }
