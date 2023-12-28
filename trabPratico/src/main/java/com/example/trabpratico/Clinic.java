@@ -8,7 +8,7 @@ public class Clinic implements Serializable {
     private String name;
     private Company company;
     private String address;
-    private String location;
+    private String phoneNumber;
     private String NIF;
     private String appointmentType;
     private ArrayList<Employee> employees;
@@ -22,7 +22,7 @@ public class Clinic implements Serializable {
         this.name = name;
         this.company = company;
         this.address = address;
-        this.location = location;
+
         this.appointmentType = appointmentType;
         this.NIF = NIF;
         this.employees = new ArrayList<>();
@@ -61,12 +61,12 @@ public class Clinic implements Serializable {
         this.address = address;
     }
 
-    public String getLocation() {
-        return location;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getAppointmentType() {

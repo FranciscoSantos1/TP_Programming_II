@@ -32,7 +32,7 @@ public class    Repository implements Serializable {
     public Map<CompanyOwner, Company> getCompanyFromCompanyOwner() {
         return companiesMap;
     }
-    public Map<String, Company> getCompaniesNIF() {
+    public Map<String, Company> getCompany() {
         return companiesMapNIF;
     }
     public Map<String, Company> getCompaniesLocation(){

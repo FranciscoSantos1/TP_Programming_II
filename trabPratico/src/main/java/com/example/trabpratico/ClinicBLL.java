@@ -1,5 +1,5 @@
 public class ClinicBLL {
-    public static void createClinic (Clinic clinic){
+    public static void createClinic (Clinic clinic, Company company){
         Repository.getRepository().getCompanieClinicsMap().put(clinic.getCompany(), clinic);
         Repository.getRepository().getClinicsMap().put(clinic.getNIF(), clinic);
         System.out.println("Clinic created successfully!");

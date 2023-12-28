@@ -1,18 +1,39 @@
 public class SessionData {
-    public static Admin admin;
-    public static CompanyOwner companyOwner;
-    public static Employee employee;
-    public static Customer customer;
+    public static Admin loggedAdmin;
+    public static CompanyOwner loggedCompanyOwner;
+    public static Employee loggedEmployee;
+    public static Customer loggedCustomer;
 
-    public void getLoggedUsers() {
-        if (admin != null) {
-            System.out.println("Admin: " + admin.getUsername());
-        } else if (companyOwner != null) {
-            System.out.println("Company Owner: " + companyOwner.getUsername());
-        } else if (employee != null) {
-            System.out.println("Employee: " + employee.getUsername());
-        } else if (customer != null) {
-            System.out.println("Customer: " + customer.getUsername());
-        }
+    public static void setLoggedAdmin(Admin admin) {
+        loggedAdmin = admin;
     }
+
+    public static void setLoggedCompanyOwner(CompanyOwner companyOwner) {
+        loggedCompanyOwner = companyOwner;
+    }
+
+    public static void setLoggedEmployee(Employee employee) {
+        loggedEmployee = employee;
+    }
+
+    public static void setLoggedCustomer(Customer customer) {
+        loggedCustomer = customer;
+    }
+
+    public static Admin getLoggedAdmin() {
+        return loggedAdmin;
+    }
+
+    public static CompanyOwner getLoggedCompanyOwner() {
+        return loggedCompanyOwner;
+    }
+
+    public static Employee getLoggedEmployee() {
+        return loggedEmployee;
+    }
+
+    public static Customer getLoggedCustomer() {
+        return loggedCustomer;
+    }
+
 }

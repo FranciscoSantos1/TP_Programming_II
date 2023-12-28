@@ -15,6 +15,10 @@ public class Company implements Serializable {
         this.clinics = new ArrayList<>();
     }
 
+    public String getCompanyOwnerName() {
+        return companyOwner.getFullName();
+    }
+
     public CompanyOwner getCompanyOwner() {
         return companyOwner;
     }

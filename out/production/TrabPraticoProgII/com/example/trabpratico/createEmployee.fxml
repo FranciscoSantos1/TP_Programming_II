@@ -20,7 +20,7 @@
                         <Image url="@../../../../../../../../../Users/franc/Downloads/dentalcare.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="97.0" layoutY="14.0" text="Registar Conta">
+                <Label layoutX="97.0" layoutY="14.0" text="Registar Funcionario">
                     <font>
                         <Font size="27.0" />
                     </font>
@@ -38,29 +38,28 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="302.0" layoutY="69.0" text="Tipo Utilizador">
+            <Label layoutX="302.0" layoutY="69.0" text="Tipo Funcionario">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="addressField" layoutX="23.0" layoutY="271.0" prefHeight="30.0" prefWidth="505.0" />
-            <Label layoutX="24.0" layoutY="250.0" text="Morada">
+            <TextField fx:id="addressField" layoutX="23.0" layoutY="261.0" prefHeight="30.0" prefWidth="505.0" />
+            <Label layoutX="24.0" layoutY="240.0" text="Morada">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="24.0" layoutY="308.0" text="NIF">
+            <Label layoutX="24.0" layoutY="298.0" text="NIF">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="emailField" layoutX="23.0" layoutY="380.0" prefHeight="30.0" prefWidth="505.0" />
-            <Label layoutX="253.0" layoutY="308.0" text="Telemovel">
+            <Label layoutX="253.0" layoutY="298.0" text="Telemovel">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="24.0" layoutY="359.0" text="Email">
+            <Label layoutX="29.0" layoutY="359.0" text="Empresa">
                <font>
                   <Font size="15.0" />
                </font>
@@ -77,8 +76,15 @@
                </font>
             </Label>
             <ChoiceBox fx:id="UserTypeChoiceBox" layoutX="302.0" layoutY="90.0" prefHeight="30.0" prefWidth="220.0" />
-            <TextField fx:id="NIFField" layoutX="22.0" layoutY="329.0" prefHeight="30.0" prefWidth="220.0" />
-            <TextField fx:id="phoneNumberField" layoutX="253.0" layoutY="329.0" prefHeight="30.0" prefWidth="274.0" />
+            <TextField fx:id="NIFField" layoutX="22.0" layoutY="319.0" prefHeight="30.0" prefWidth="220.0" />
+            <TextField fx:id="phoneNumberField" layoutX="253.0" layoutY="319.0" prefHeight="30.0" prefWidth="274.0" />
+            <ChoiceBox fx:id="UserTypeChoiceBox1" layoutX="22.0" layoutY="380.0" prefHeight="30.0" prefWidth="220.0" />
+            <Label layoutX="276.0" layoutY="359.0" text="Clinica">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="UserTypeChoiceBox11" layoutX="276.0" layoutY="380.0" prefHeight="30.0" prefWidth="220.0" />
          </children>
         </AnchorPane>
    </left>

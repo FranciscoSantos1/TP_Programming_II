@@ -38,6 +38,7 @@ public class Employee extends User {
         System.out.println("Nome: " + clinic.getName());
         System.out.println("NIF: " + clinic.getNIF());
         System.out.println("Morada: " + clinic.getAddress());
-        System.out.println("Localizacao: " + clinic.getLocation());
+        System.out.println("Tipo de Consulta: " + clinic.getAppointmentType());
+        System.out.println("Empresa: " + clinic.getCompany().getName());
     }
 }

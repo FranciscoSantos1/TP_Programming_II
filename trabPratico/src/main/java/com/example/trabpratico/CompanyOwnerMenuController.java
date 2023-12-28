@@ -115,7 +115,7 @@ public class CompanyOwnerMenuController {
     @FXML
     public void listCompanies(javafx.event.ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/listCompanies.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/listCompaniesByCompanyOwner.fxml"));
             Scene regCena = new Scene (root);
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(regCena);

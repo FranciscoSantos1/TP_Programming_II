@@ -52,7 +52,7 @@ public class LoginController {
 
             for (Customer c : repo.getCustomers().values()) {
                 if (user.equals(c.getUsername()) && password.equals(c.getPassword())) {
-                    sd.customer = c;
+                    sd.loggedCustomer = c;
                     found = true;
                     Parent root;
                     root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/customerMenu.fxml"));
@@ -66,7 +66,7 @@ public class LoginController {
 
             for (CompanyOwner co : repo.getCompanyOwners().values()) {
                 if (usernameField.getText().equalsIgnoreCase(co.getUsername()) && passwordField.getText().equals(co.getPassword())) {
-                    sd.companyOwner = co;
+                    sd.loggedCompanyOwner = co;
                     found = true;
                     System.out.println("Login com Sucesso!");
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/companyOwnerMenu.fxml"));
@@ -79,7 +79,7 @@ public class LoginController {
             }
             for (Admin a : repo.getAdmins().values()) {
                 if (usernameField.getText().equalsIgnoreCase(a.getUsername()) && passwordField.getText().equals(a.getPassword())) {
-                    sd.admin = a;
+                    sd.loggedAdmin = a;
                     found = true;
                     System.out.println("Login com Sucesso!");
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/adminMenu.fxml"));
@@ -92,7 +92,7 @@ public class LoginController {
             }
             for (Employee e : repo.getEmployees().values()) {
                 if (usernameField.getText().equalsIgnoreCase(e.getUsername()) && passwordField.getText().equals(e.getPassword())) {
-                    sd.employee = e;
+                    sd.loggedEmployee = e;
                     found = true;
                     System.out.println("Login com Sucesso!");
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/EmployeeMenu.fxml"));
