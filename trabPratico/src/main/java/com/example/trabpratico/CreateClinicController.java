@@ -40,6 +40,8 @@ public class CreateClinicController {
     @FXML
     private Button registerButton;
 
+
+
     @FXML
     public void goBack(javafx.event.ActionEvent ActionEvent) {
         try {
@@ -59,18 +61,18 @@ public class CreateClinicController {
         CompanyOwner co = SessionData.loggedCompanyOwner;
         List<Company> companies = co.getCompanies();
         List<String> companiesNames = new ArrayList<>();
-        for(Company c : companies) {
-            if(!companiesNames.contains(c.getName())) {
-                companiesNames.add(c.getName());
-            }
+
+        for (Company c : companies) {
+            companiesNames.add(c.getName());
         }
+
         ObservableList<String> observableList = FXCollections.observableArrayList(companiesNames);
         companyField.setItems(observableList);
     }
 
     @FXML
     public void registerClinic(javafx.event.ActionEvent event) {
-        if(checkName(event) && checkNIF(event) && checkPhoneNumber(event)) {
+        if (checkName(event) && checkNIF(event) && checkPhoneNumber(event)) {
             Clinic clinic = new Clinic();
 
             clinic.setName(clinicNameField.getText());
@@ -78,29 +80,47 @@ public class CreateClinicController {
             clinic.setNIF(NIFField.getText());
             clinic.setAppointmentType(SpecialtyField.getText());
             clinic.setPhoneNumber(phoneNumberField.getText());
-            for(Company c : Repository.getRepository().getCompanyFromCompanyOwner().values()) {
-                if(c.getName().equals(companyField.getValue())) {
-                    clinic.setCompany(c);
+
+            String selectedCompanyName = companyField.getValue();
+
+            // Find the selected company by name
+            Company selectedCompany = findCompanyByName(selectedCompanyName);
+
+            if (selectedCompany != null) {
+                clinic.setCompany(selectedCompany);
+                ClinicBLL.createClinic(clinic, clinic.getCompany());
+
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/companyOwnerMenu.fxml"));
+                    Scene regCena = new Scene(root);
+                    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                    stage.setScene(regCena);
+                    stage.setTitle("Menu Dono de Empresa");
+                    stage.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-            }
-
-            ClinicBLL.createClinic(clinic, clinic.getCompany());
-
-            try {
-                Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/companyOwnerMenu.fxml"));
-                Scene regCena = new Scene(root);
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(regCena);
-                stage.setTitle("Menu Dono de Empresa");
-                stage.show();
-            } catch (Exception e) {
-                e.printStackTrace();
+            } else {
+                System.out.println("Selected company not found.");
             }
         } else {
             return;
         }
     }
 
+    // Helper method to find a company by name
+    private Company findCompanyByName(String companyName) {
+        CompanyOwner co = SessionData.loggedCompanyOwner;
+        List<Company> companies = co.getCompanies();
+
+        for (Company c : companies) {
+            if (c.getName().equals(companyName)) {
+                return c;
+            }
+        }
+
+        return null; // Company not found
+    }
     @FXML
     public boolean checkName(javafx.event.ActionEvent event) {
         if(clinicNameField.getText().isEmpty()) {

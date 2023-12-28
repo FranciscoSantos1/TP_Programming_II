@@ -14,6 +14,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class listCompaniesByCompanyOwnerController {
@@ -55,8 +56,7 @@ public class listCompaniesByCompanyOwnerController {
         }
     }
 
-
-
+    @FXML
     public void initialize() {
         CompanyNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -64,37 +64,35 @@ public class listCompaniesByCompanyOwnerController {
         phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         CompanyOwnerNameColumn.setCellValueFactory(new PropertyValueFactory<>("companyOwnerName"));
 
+        List<Company> companyList = new ArrayList<>();
+
         CompanyOwner companyOwner = SessionData.getLoggedCompanyOwner();
 
         Repository repo = Repository.getRepository();
+        repo.deserialize("users.repo");
 
-        /*for(CompanyOwner co : repo.getCompanyFromCompanyOwner().keySet()){
-            if(co.getUsername().equals(companyOwner.getUsername())){
-                List<Company> companies = co.getCompanies();
+        for (CompanyOwner co : repo.getCompanyFromCompanyOwner().keySet()) {
+            if (companyOwner.getUsername().equals(co.getUsername())) {
+                try {
+                    Object value = repo.getCompanyFromCompanyOwner().get(co);
 
+                    if (value instanceof List) {
+                        List<Company> companies = (List<Company>) value;
+                        System.out.println(repo.getCompanyFromCompanyOwner().get(co).size());
 
-                ObservableList<Company> observableList = FXCollections.observableArrayList(companies);
+                        for (Company c : companies) {
+                            companyList.add(c);
+                        }
 
-                companiesTable.setItems(observableList);
-            }
-        }*/
+                    }
 
-        for(CompanyOwner co : repo.getCompanyFromCompanyOwner().keySet()){
-            if(co.getUsername().equals(companyOwner.getUsername())){
-                System.out.println("Number of loaded companies: " + co.getCompanies().size());
-            }
+                    ObservableList<Company> observableList = FXCollections.observableArrayList(companyList);
 
-
-        }
-
-
-
-        for(CompanyOwner co : repo.getCompanyOwners().values()){
-            if(co.getUsername().equals(companyOwner.getUsername())){
-                List<Company> companies = co.getCompanies();
-
-                ObservableList<Company> observableList = FXCollections.observableArrayList(companies);
-                companiesTable.setItems(observableList);
+                    companiesTable.setItems(observableList);
+                } catch (ClassCastException e) {
+                    // Handle the exception (e.g., log it or take appropriate action)
+                    e.printStackTrace();
+                }
             }
         }
     }

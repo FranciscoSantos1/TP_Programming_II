@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 public class Main extends Application {
     @Override
@@ -189,14 +190,16 @@ public class Main extends Application {
         System.out.println("\n----------------------------------------");
         System.out.println("------| Dados das EMPRESAS |---------");
         int a = 0;
-        for (Company aux : repo.getCompanyFromCompanyOwner().values()) {
-            System.out.println("----------------------------------------");
-            System.out.println("Empresa nº: "  + ++a);
-            System.out.println("Nome: " + aux.getName());
-            System.out.println("NIF: " + aux.getNIF());
-            System.out.println("Morada: " + aux.getAddress());
-            System.out.println("Numero telemovel: " + aux.getPhoneNumber());
-            System.out.println("Dono: " + aux.getCompanyOwner().getFullName());
+        for (List<Company> aux : repo.getCompanyFromCompanyOwner().values()) {
+            for(Company aux2 : aux){
+                System.out.println("----------------------------------------");
+                System.out.println("Empresa nº: "  + ++a);
+                System.out.println("Nome: " + aux2.getName());
+                System.out.println("NIF: " + aux2.getNIF());
+                System.out.println("Morada: " + aux2.getAddress());
+                System.out.println("Numero telemovel: " + aux2.getPhoneNumber());
+                System.out.println("Dono: " + aux2.getCompanyOwner().getFullName());
+            }
         }
 
         System.out.println("--------- FIM DAS EMPRESAS ---------");

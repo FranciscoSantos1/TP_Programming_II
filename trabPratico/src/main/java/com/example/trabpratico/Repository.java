@@ -9,8 +9,8 @@ public class    Repository implements Serializable {
 
     private Map<String, Customer> customersMap = new HashMap<>();               // Mapa de <NIF, Customer>
     private Map<String, CompanyOwner> companyOwnersMap = new HashMap<>();       // Mapa de <NIF, CompanyOwner>
-    private Map<CompanyOwner, Company> companiesMap = new HashMap<>();          // Mapa de <CompanyOwner, Company>
-    private Map<String, Company> companiesMapNIF = new HashMap<>();             // Mapa de <NIF, Company>
+    private Map<CompanyOwner, List<Company>> companiesMap = new HashMap<>();          // Mapa de <CompanyOwner, Company>
+    private Map<String, Company> companiesMapNIF = new HashMap<>();             // Mapa de <NIFOwner, Company>
     private Map<String, Company> companiesLocation = new HashMap<>();           // Mapa de <Location, Company>
     private Map<Integer, Admin> adminsMap = new HashMap<>();                    // Mapa de <idAdmin, Admin>
     private Map<String, Employee> employeesMap= new HashMap<>();                // Mapa de <NIF, Employee>
@@ -29,7 +29,7 @@ public class    Repository implements Serializable {
     public Map<String, CompanyOwner> getCompanyOwners() {
         return companyOwnersMap;
     }
-    public Map<CompanyOwner, Company> getCompanyFromCompanyOwner() {
+    public Map<CompanyOwner, List<Company>> getCompanyFromCompanyOwner() {
         return companiesMap;
     }
     public Map<String, Company> getCompany() {
