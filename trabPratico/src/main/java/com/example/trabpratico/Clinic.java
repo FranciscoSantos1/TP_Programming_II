@@ -14,6 +14,7 @@ public class Clinic implements Serializable {
     private ArrayList<Employee> employees;
     private Map<Service, Double> services;
 
+
     public Clinic() {
         this.employees = new ArrayList<>();
     }

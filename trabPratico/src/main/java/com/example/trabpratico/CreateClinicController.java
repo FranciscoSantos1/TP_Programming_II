@@ -56,9 +56,14 @@ public class CreateClinicController {
         }
     }
 
+
     @FXML
     public void initialize() {
+        Repository repo = Repository.getRepository();
+        repo.deserialize("users.repo");
         CompanyOwner co = SessionData.loggedCompanyOwner;
+
+
         List<Company> companies = co.getCompanies();
         List<String> companiesNames = new ArrayList<>();
 
@@ -68,6 +73,8 @@ public class CreateClinicController {
 
         ObservableList<String> observableList = FXCollections.observableArrayList(companiesNames);
         companyField.setItems(observableList);
+
+        System.out.println("ChoiceBox items set");
     }
 
     @FXML
@@ -88,7 +95,7 @@ public class CreateClinicController {
 
             if (selectedCompany != null) {
                 clinic.setCompany(selectedCompany);
-                ClinicBLL.createClinic(clinic, clinic.getCompany());
+                ClinicBLL. createClinic(clinic, clinic.getCompany());
 
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/companyOwnerMenu.fxml"));

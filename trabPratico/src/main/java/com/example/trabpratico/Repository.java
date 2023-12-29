@@ -9,16 +9,19 @@ public class    Repository implements Serializable {
 
     private Map<String, Customer> customersMap = new HashMap<>();               // Mapa de <NIF, Customer>
     private Map<String, CompanyOwner> companyOwnersMap = new HashMap<>();       // Mapa de <NIF, CompanyOwner>
-    private Map<CompanyOwner, List<Company>> companiesMap = new HashMap<>();          // Mapa de <CompanyOwner, Company>
+    private Map<CompanyOwner, List<Company>> companiesMap = new HashMap<>();    // Mapa de <CompanyOwner, List<Company>>
     private Map<String, Company> companiesMapNIF = new HashMap<>();             // Mapa de <NIFOwner, Company>
     private Map<String, Company> companiesLocation = new HashMap<>();           // Mapa de <Location, Company>
     private Map<Integer, Admin> adminsMap = new HashMap<>();                    // Mapa de <idAdmin, Admin>
     private Map<String, Employee> employeesMap= new HashMap<>();                // Mapa de <NIF, Employee>
+    private Map<Clinic, List<Service>> servicesClinicMap = new HashMap<>();     // Mapa de <Clinic, List<Service>>
     private Map<Integer, Service> services = new HashMap<>();                   // Mapa de <ServiceId, Service>
     private Map<Integer, Appointment> appointmentsMap = new HashMap<>();        // Mapa de <AppointmentId, Appointment>
-    private Map<Company, Clinic> CompanieClinicsMap = new HashMap<>();          // Mapa de <Company, Clinic>
-    protected Map<Clinic, Employee> employeesClinicMap = new HashMap<>();       // Mapa de <Clinic, Employee>
-    public Map<String, Clinic> clinicsMap = new HashMap<>();                    // Mapa de <NIF, Clinic>
+    private Map<Company, List<Clinic>> CompanieClinicsMap = new HashMap<>();    // Mapa de <Company, List<Clinic>>
+    private Map<Clinic, List<Employee>> employeesClinicMap = new HashMap<>();         // Mapa de <Clinic, Employee>
+    private Map<String, Clinic> clinicsMap = new HashMap<>();                   // Mapa de <NIF, Clinic>
+    private Map<String, List<Clinic>> clinicsPerCompanyOner = new HashMap<>();  // Mapa de <NIFCompanyOwner, List<Clinic>>
+
 
 
     public Repository (){};
@@ -41,10 +44,12 @@ public class    Repository implements Serializable {
     public Map<Integer, Admin> getAdmins() {return adminsMap;}
     public Map<String, Employee> getEmployees() {return employeesMap;}
     public Map<Integer, Service> getServices() {return services;}
+    public Map<Clinic, List<Service>> getServicesClinicMap(){return servicesClinicMap;}
     public Map<Integer, Appointment> getAppointments(){return appointmentsMap;}
-    public Map<Company, Clinic> getCompanieClinicsMap(){return CompanieClinicsMap;}
+    public Map<Company, List<Clinic>> getCompanieClinicsMap(){return CompanieClinicsMap;}
     public Map<String, Clinic> getClinicsMap(){return clinicsMap;}
-    public Map<Clinic, Employee> getEmployeesClinicMap(){return employeesClinicMap;}
+    public Map<Clinic, List<Employee>> getEmployeesClinicMap(){return employeesClinicMap;}
+    public Map<String, List<Clinic>> getClinicsPerCompanyOner(){return clinicsPerCompanyOner;}
 
     public static Repository getRepository(){
 

@@ -7,7 +7,11 @@ public class Service implements Serializable {
     private Clinic clinic;
 
     public Service(){
-
+    }
+    public Service(String serviceName, double servicePrice, Clinic clinic) {
+        this.serviceName = serviceName;
+        this.servicePrice = servicePrice;
+        this.clinic = clinic;
     }
 
     public Integer getServiceId() {
@@ -30,7 +34,7 @@ public class Service implements Serializable {
         return servicePrice;
     }
 
-    public void setServicePrice(float servicePrice) {
+    public void setServicePrice(double servicePrice) {
         this.servicePrice = servicePrice;
     }
 

@@ -43,7 +43,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="addService" layoutX="84.0" layoutY="365.0" mnemonicParsing="false" onAction="#addService" prefHeight="50.0" prefWidth="200.0" text="Adicionar Serviço">
+            <Button fx:id="addService" layoutX="84.0" layoutY="365.0" mnemonicParsing="false" onAction="#createService" prefHeight="50.0" prefWidth="200.0" text="Adicionar Serviço">
                <font>
                   <Font size="14.0" />
                </font>

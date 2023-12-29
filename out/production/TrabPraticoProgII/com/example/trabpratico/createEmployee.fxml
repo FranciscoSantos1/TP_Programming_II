@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="RegisterController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CreateEmployeeController">
    <left>
         <AnchorPane prefHeight="500.0" prefWidth="705.0" style="-fx-background-color: #93CAED;" BorderPane.alignment="CENTER">
          <children>
@@ -26,7 +26,7 @@
                     </font>
                 </Label>
                 <TextField fx:id="usernameField" layoutX="22.0" layoutY="90.0" prefHeight="30.0" prefWidth="220.0" promptText="Username" />
-                <Button fx:id="registerButton2" layoutX="139.0" layoutY="450.0" mnemonicParsing="false" onAction="#register" prefHeight="22.0" prefWidth="148.0" text="Registar">
+                <Button fx:id="registerButton" layoutX="139.0" layoutY="450.0" mnemonicParsing="false" onAction="#registerEmployee" prefHeight="22.0" prefWidth="148.0" text="Registar">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -59,11 +59,6 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label layoutX="29.0" layoutY="359.0" text="Empresa">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
             <Button fx:id="backButton" layoutX="643.0" layoutY="468.0" mnemonicParsing="false" onAction="#goBack" prefHeight="31.0" prefWidth="57.0" text="Voltar" />
             <Label layoutX="24.0" layoutY="69.0" text="Username">
                <font>
@@ -76,15 +71,15 @@
                </font>
             </Label>
             <ChoiceBox fx:id="UserTypeChoiceBox" layoutX="302.0" layoutY="90.0" prefHeight="30.0" prefWidth="220.0" />
+             
             <TextField fx:id="NIFField" layoutX="22.0" layoutY="319.0" prefHeight="30.0" prefWidth="220.0" />
             <TextField fx:id="phoneNumberField" layoutX="253.0" layoutY="319.0" prefHeight="30.0" prefWidth="274.0" />
-            <ChoiceBox fx:id="UserTypeChoiceBox1" layoutX="22.0" layoutY="380.0" prefHeight="30.0" prefWidth="220.0" />
-            <Label layoutX="276.0" layoutY="359.0" text="Clinica">
+            <Label layoutX="25.0" layoutY="359.0" text="Clinica">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="UserTypeChoiceBox11" layoutX="276.0" layoutY="380.0" prefHeight="30.0" prefWidth="220.0" />
+            <ChoiceBox fx:id="ClinicChoiceBox" layoutX="24.0" layoutY="380.0" onDragDetected="#registerEmployee" prefHeight="30.0" prefWidth="220.0" />
          </children>
         </AnchorPane>
    </left>

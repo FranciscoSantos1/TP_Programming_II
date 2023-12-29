@@ -30,7 +30,6 @@ public class Main extends Application {
         User u3 = new CompanyOwner();
 
 
-
         //DADOS DE TESTE
         u.setUsername("c1");
         u.setPassword("c1");
@@ -55,7 +54,6 @@ public class Main extends Application {
         u3.setPhoneNumber("937707486");
         u3.setFullName("companyOwner2");
         CompanyOwnerBLL.createCompanyOwner((CompanyOwner) u3);
-
 
 
         if (repo.getAdmins().isEmpty()) {
@@ -137,18 +135,19 @@ public class Main extends Application {
         System.out.println("------| Dados dos FUNCIONARIOS |---------");
 
         int l = 0;
-        for (Employee aux : repo.getEmployees().values()) {
-            System.out.println("----------------------------------------");
-            System.out.println("Funcionario nº: " + ++l);
-            System.out.println("Nome: " + aux.getFullName());
-            System.out.println("NIF: " + aux.getNIF());
-            System.out.println("userName: " + aux.getUsername());
-            System.out.println("password: " + aux.getPassword());
-            System.out.println("Morada: " + aux.getAddress());
-            System.out.println("Nº Telefone: " + aux.getPhoneNumber());
-            System.out.println("tipo: " + aux.getType());
-            System.out.println("Empresa: ");
-            aux.printClinicData();
+        for (List<Employee> employees : repo.getEmployeesClinicMap().values()) {
+            for (Employee aux : employees) {
+                System.out.println("----------------------------------------");
+                System.out.println("Funcionario nº: " + ++l);
+                System.out.println("Nome: " + aux.getFullName());
+                System.out.println("NIF: " + aux.getNIF());
+                System.out.println("userName: " + aux.getUsername());
+                System.out.println("password: " + aux.getPassword());
+                System.out.println("Morada: " + aux.getAddress());
+                System.out.println("Nº Telefone: " + aux.getPhoneNumber());
+                System.out.println("tipo: " + aux.getEmployeeType().name());
+                System.out.println("Empresa: ");}
+
         }
 
 
@@ -167,7 +166,6 @@ public class Main extends Application {
         }
 
         System.out.println("--------- FIM DOS SERVIÇOS ---------");
-
 
 
         System.out.println("\n----------------------------------------");
@@ -191,9 +189,9 @@ public class Main extends Application {
         System.out.println("------| Dados das EMPRESAS |---------");
         int a = 0;
         for (List<Company> aux : repo.getCompanyFromCompanyOwner().values()) {
-            for(Company aux2 : aux){
+            for (Company aux2 : aux) {
                 System.out.println("----------------------------------------");
-                System.out.println("Empresa nº: "  + ++a);
+                System.out.println("Empresa nº: " + ++a);
                 System.out.println("Nome: " + aux2.getName());
                 System.out.println("NIF: " + aux2.getNIF());
                 System.out.println("Morada: " + aux2.getAddress());
@@ -206,21 +204,37 @@ public class Main extends Application {
 
         System.out.println("\n----------------------------------------");
         System.out.println("------| Dados das CLINICAS |---------");
-        int b = 0;
-        for (Clinic aux : repo.getCompanieClinicsMap().values()) {
+        /*int b = 0;
+
+        for (Clinic clinic : repo.getClinicsMap().values()){
             System.out.println("----------------------------------------");
             System.out.println("Clinica nº: " + ++b);
-            System.out.println("Nome: " + aux.getName());
-            System.out.println("NIF: " + aux.getNIF());
-            System.out.println("Morada: " + aux.getAddress());
-            System.out.println("Numero telemovel: " + aux.getPhoneNumber());
-            System.out.println("Tipo de consulta: " + aux.getAppointmentType());
-            System.out.println("Empresa: " + aux.getCompany().getName());
+            System.out.println("Nome: " + clinic.getName());
+            System.out.println("NIF: " + clinic.getNIF());
+            System.out.println("Morada: " + clinic.getAddress());
+            System.out.println("Numero telemovel: " + clinic.getPhoneNumber());
+            System.out.println("Tipo de consulta: " + clinic.getAppointmentType());
+            System.out.println("Empresa: " + clinic.getCompany().getName());
         }
 
-        System.out.println("--------- FIM DAS CLINICAS ---------");
-    }
 
+        System.out.println("--------- FIM DAS CLINICAS ---------");
+    }*/
+        int b = 0;
+
+        for(List<Clinic> c : repo.getClinicsPerCompanyOner().values()){
+            for(Clinic clinic : c){
+                System.out.println("----------------------------------------");
+                System.out.println("Clinica nº: " + ++b);
+                System.out.println("Nome: " + clinic.getName());
+                System.out.println("NIF: " + clinic.getNIF());
+                System.out.println("Morada: " + clinic.getAddress());
+                System.out.println("Numero telemovel: " + clinic.getPhoneNumber());
+                System.out.println("Tipo de consulta: " + clinic.getAppointmentType());
+                System.out.println("Empresa: " + clinic.getCompany().getName());
+            }
+        }
     }
+}
 
 

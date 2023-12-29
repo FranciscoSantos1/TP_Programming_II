@@ -4,10 +4,24 @@ public class Employee extends User {
     private EmployeeType type;
     private ArrayList<Appointment> appointments;
     private Clinic clinic;
+    private EmployeeType employeeType;
+
+    public Employee() {
+        appointments = new ArrayList<>();
+    }
 
     public Employee(EmployeeType type) {
         this.type = type;
         appointments = new ArrayList<>();
+    }
+
+
+    public EmployeeType getEmployeeType() {
+        return employeeType;
+    }
+
+    public void setEmployeeType(EmployeeType employeeType) {
+        this.employeeType = employeeType;
     }
 
     public EmployeeType getType() {
@@ -34,11 +48,4 @@ public class Employee extends User {
         this.clinic = clinic;
     }
 
-    public void printClinicData(){
-        System.out.println("Nome: " + clinic.getName());
-        System.out.println("NIF: " + clinic.getNIF());
-        System.out.println("Morada: " + clinic.getAddress());
-        System.out.println("Tipo de Consulta: " + clinic.getAppointmentType());
-        System.out.println("Empresa: " + clinic.getCompany().getName());
-    }
 }

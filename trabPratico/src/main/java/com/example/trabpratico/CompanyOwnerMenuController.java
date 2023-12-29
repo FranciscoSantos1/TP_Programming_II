@@ -125,4 +125,18 @@ public class CompanyOwnerMenuController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    public void createService(javafx.event.ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/createService.fxml"));
+            Scene regCena = new Scene (root);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("Criar Serviço");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
