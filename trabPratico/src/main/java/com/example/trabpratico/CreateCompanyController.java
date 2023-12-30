@@ -60,6 +60,8 @@ public class CreateCompanyController {
 
             CompanyBLL.createCompany(company, SessionData.loggedCompanyOwner);
 
+            System.out.println(Repository.getRepository().getCompany().get(SessionData.loggedCompanyOwner.getNIF()).getName());
+
 
 
             try {

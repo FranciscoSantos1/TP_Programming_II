@@ -2,7 +2,6 @@ import java.io.Serializable;
 
 public class Service implements Serializable {
     private String serviceName;
-    private Integer serviceId;
     private double servicePrice;
     private Clinic clinic;
 
@@ -14,13 +13,6 @@ public class Service implements Serializable {
         this.clinic = clinic;
     }
 
-    public Integer getServiceId() {
-        return serviceId;
-    }
-
-    public void setServiceId(Integer serviceId) {
-        this.serviceId = serviceId;
-    }
 
     public String getServiceName() {
         return serviceName;

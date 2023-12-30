@@ -27,7 +27,8 @@ public class ClinicBLL {
         clinicsOwned.add(clinic);
         companyClinics.add(clinic);
 
-        repo.getClinicsMap().put(clinic.getNIF(), clinic);
+
+        repo.getClinicsMap().put(company.getCompanyOwner().getNIF(), clinic);
 
         System.out.println("Clinic created successfully!");
 

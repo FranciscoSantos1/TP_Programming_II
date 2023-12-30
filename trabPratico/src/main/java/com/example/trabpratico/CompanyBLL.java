@@ -24,9 +24,10 @@ public class CompanyBLL {
             // Add the new company to the list of companies for this companyOwner
             ownerCompanies.add(company);
 
+
             companiesLocation.put(company.getLocation(), company);
-            co.getCompanies().add(company);
-            companyMap.put(company.getNIF(), company);
+            company.getCompanyOwner().getCompanies().add(company);
+            companyMap.put(co.getNIF(), company);
             Repository.getRepository().getCompanyOwners().put(co.getNIF(), co);
             System.out.println("Company created successfully!");
             Repository.getRepository().serialize("users.repo");

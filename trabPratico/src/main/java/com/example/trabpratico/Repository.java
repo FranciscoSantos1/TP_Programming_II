@@ -15,10 +15,10 @@ public class    Repository implements Serializable {
     private Map<Integer, Admin> adminsMap = new HashMap<>();                    // Mapa de <idAdmin, Admin>
     private Map<String, Employee> employeesMap= new HashMap<>();                // Mapa de <NIF, Employee>
     private Map<Clinic, List<Service>> servicesClinicMap = new HashMap<>();     // Mapa de <Clinic, List<Service>>
-    private Map<Integer, Service> services = new HashMap<>();                   // Mapa de <ServiceId, Service>
+    private Map<String, Service> services = new HashMap<>();                   // Mapa de <clinicNIF, Service>
     private Map<Integer, Appointment> appointmentsMap = new HashMap<>();        // Mapa de <AppointmentId, Appointment>
     private Map<Company, List<Clinic>> CompanieClinicsMap = new HashMap<>();    // Mapa de <Company, List<Clinic>>
-    private Map<Clinic, List<Employee>> employeesClinicMap = new HashMap<>();         // Mapa de <Clinic, Employee>
+    private Map<Clinic, List<Employee>> employeesClinicMap = new HashMap<>();   // Mapa de <Clinic, Employee>
     private Map<String, Clinic> clinicsMap = new HashMap<>();                   // Mapa de <NIF, Clinic>
     private Map<String, List<Clinic>> clinicsPerCompanyOner = new HashMap<>();  // Mapa de <NIFCompanyOwner, List<Clinic>>
 
@@ -43,7 +43,7 @@ public class    Repository implements Serializable {
     }
     public Map<Integer, Admin> getAdmins() {return adminsMap;}
     public Map<String, Employee> getEmployees() {return employeesMap;}
-    public Map<Integer, Service> getServices() {return services;}
+    public Map<String, Service> getServices() {return services;}
     public Map<Clinic, List<Service>> getServicesClinicMap(){return servicesClinicMap;}
     public Map<Integer, Appointment> getAppointments(){return appointmentsMap;}
     public Map<Company, List<Clinic>> getCompanieClinicsMap(){return CompanieClinicsMap;}

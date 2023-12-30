@@ -56,6 +56,8 @@ public class listCompaniesByCompanyOwnerController {
         }
     }
 
+
+
     @FXML
     public void initialize() {
         CompanyNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));

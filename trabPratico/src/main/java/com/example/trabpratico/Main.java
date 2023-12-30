@@ -157,12 +157,17 @@ public class Main extends Application {
         System.out.println("\n----------------------------------------");
         System.out.println("------| Dados dos SERVIÇOS |---------");
 
-        for (Service aux : repo.getServices().values()) {
-            System.out.println("----------------------------------------");
-            System.out.println("Serviço nº: " + aux.getServiceId());
-            System.out.println("Nome: " + aux.getServiceName());
-            System.out.println("Preço: " + aux.getServicePrice());
-            System.out.println("Empresa: " + aux.getClinic().getName());
+        int e = 0;
+        for (List<Service> aux : repo.getServicesClinicMap().values()) {
+            for(Service aux2 :  aux){
+                System.out.println("----------------------------------------");
+                System.out.println("Serviço nº: " + ++e);
+                System.out.println("Nome: " + aux2.getServiceName());
+                System.out.println("Preço: " + aux2.getServicePrice());
+                System.out.println("Empresa: " + aux2.getClinic().getName());
+            }
+
+
         }
 
         System.out.println("--------- FIM DOS SERVIÇOS ---------");

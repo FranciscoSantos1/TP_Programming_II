@@ -5,12 +5,25 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.util.Optional;
 
 public class customerMenuController {
+    @FXML
+    private Button PayAppointments;
+
+    @FXML
+    private Button goBack;
+
+    @FXML
+    private Button listClinics;
+
+    @FXML
+    private Button makeAppointment;
+
 
     @FXML
     void goBack(javafx.event.ActionEvent ActionEvent) {
@@ -55,7 +68,7 @@ public class customerMenuController {
     @FXML
     void ClinicsList(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/clinicsList.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/listClinicsByCustomer.fxml"));
             Scene regCena = new Scene (root);
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(regCena);

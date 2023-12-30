@@ -10,16 +10,17 @@ public class ServiceBLL {
 
         Map<Clinic, List<Service>> servicesClinicMap = repo.getServicesClinicMap();
 
-        List<Service> services = servicesClinicMap.get(service.getClinic());
+        List<Service> services = servicesClinicMap.get(clinic);
         if (services == null) {
             services = new ArrayList<>();
             servicesClinicMap.put(service.getClinic(), services);
         }
 
         services.add(service);
+        clinic.getServices().put(service, service.getServicePrice());
+        Repository.getRepository().getServices().put(service.getClinic().getNIF(), service);
+        Repository.getRepository().getClinicsMap().get(clinic.getNIF()).getServices().put(service ,service.getServicePrice());
 
-        Repository.getRepository().getServices().put(service.getServiceId(), service);
-        Repository.getRepository().getClinicsMap().get(clinic.getNIF()).getServices().put(service, service.getServicePrice());
         System.out.println("Serviço criado com sucesso!!!");
         Repository.getRepository().serialize("users.repo");
     }

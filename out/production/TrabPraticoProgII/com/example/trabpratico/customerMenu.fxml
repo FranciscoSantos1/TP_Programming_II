@@ -22,22 +22,22 @@
                         <Font size="27.0" />
                     </font>
                 </Label>
-            <Button layoutX="84.0" layoutY="151.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Marcar consulta">
+            <Button fx:id="makeAppointment" layoutX="84.0" layoutY="151.0" mnemonicParsing="false" onAction="#makeAnAppointment" prefHeight="50.0" prefWidth="200.0" text="Marcar consulta">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="84.0" layoutY="303.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Pagar consultas">
+            <Button fx:id="PayAppointments" layoutX="84.0" layoutY="303.0" mnemonicParsing="false" onAction="#customerPayments" prefHeight="50.0" prefWidth="200.0" text="Pagar consultas">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button layoutX="84.0" layoutY="225.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" text="Listar clínicas">
+            <Button fx:id="listClinics" layoutX="84.0" layoutY="225.0" mnemonicParsing="false" onAction="#ClinicsList" prefHeight="50.0" prefWidth="200.0" text="Listar clínicas">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="logout" layoutX="558.0" layoutY="460.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="128.0" text="Terminar sessão" />
+            <Button fx:id="goBack" layoutX="558.0" layoutY="460.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="128.0" text="Terminar sessão" />
             </children>
         </AnchorPane>
     </left>

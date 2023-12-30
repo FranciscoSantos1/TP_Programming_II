@@ -11,6 +11,7 @@ public class Appointment implements Serializable {
     private Customer customer;
     private AppointmentState state;
     private Service services;
+    private String description;
 
     public Appointment(){};
 
@@ -87,5 +88,13 @@ public class Appointment implements Serializable {
 
     public void setServices(Service services) {
         this.services = services;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

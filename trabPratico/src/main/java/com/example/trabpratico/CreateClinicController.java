@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class CreateClinicController {
@@ -57,15 +58,24 @@ public class CreateClinicController {
     }
 
 
-    @FXML
+    /*@FXML
     public void initialize() {
         Repository repo = Repository.getRepository();
         repo.deserialize("users.repo");
-        CompanyOwner co = SessionData.loggedCompanyOwner;
+        CompanyOwner co = new CompanyOwner();
+        co = SessionData.loggedCompanyOwner;
+
+        List<String> companiesNames = new ArrayList<>();
+
+        *//*for(Company c : repo.getCompany().values()){
+            if(c.getCompanyOwner().getNIF().equals(co.getNIF())){
+                companiesNames.add(c.getName());
+            }
+        }*//*
 
 
         List<Company> companies = co.getCompanies();
-        List<String> companiesNames = new ArrayList<>();
+
 
         for (Company c : companies) {
             companiesNames.add(c.getName());
@@ -74,7 +84,37 @@ public class CreateClinicController {
         ObservableList<String> observableList = FXCollections.observableArrayList(companiesNames);
         companyField.setItems(observableList);
 
-        System.out.println("ChoiceBox items set");
+    }*/
+
+    @FXML
+    public void initialize() {
+        Repository repo = Repository.getRepository();
+        repo.deserialize("users.repo");
+        CompanyOwner co = new CompanyOwner();
+        co = SessionData.loggedCompanyOwner;
+
+        for (CompanyOwner co1 : repo.getCompanyFromCompanyOwner().keySet()) {
+            if (co1.getUsername().equals(co.getUsername())) {
+                try {
+                    Object value = repo.getCompanyFromCompanyOwner().get(co1);
+                    if (value instanceof List) {
+                        List<Company> companies = (List<Company>) value;
+                        System.out.println(repo.getCompanyFromCompanyOwner().get(co1).size());
+                        List<String> companiesNames = new ArrayList<>();
+
+                        for (Company c : companies) {
+                            companiesNames.add(c.getName());
+                        }
+
+                        ObservableList<String> observableList = FXCollections.observableArrayList(companiesNames);
+                        companyField.setItems(observableList);
+                    }
+
+                } catch (ClassCastException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @FXML
@@ -115,6 +155,7 @@ public class CreateClinicController {
         }
     }
 
+
     // Helper method to find a company by name
     private Company findCompanyByName(String companyName) {
         CompanyOwner co = SessionData.loggedCompanyOwner;
@@ -128,6 +169,8 @@ public class CreateClinicController {
 
         return null; // Company not found
     }
+
+
     @FXML
     public boolean checkName(javafx.event.ActionEvent event) {
         if(clinicNameField.getText().isEmpty()) {

@@ -17,6 +17,7 @@ public class Clinic implements Serializable {
 
     public Clinic() {
         this.employees = new ArrayList<>();
+        this.services = new HashMap<>();
     }
 
     public Clinic(String name, Company company, String address, String location, String appointmentType, String NIF ) {

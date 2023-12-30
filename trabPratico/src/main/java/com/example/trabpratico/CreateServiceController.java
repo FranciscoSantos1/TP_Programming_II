@@ -11,8 +11,10 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ResourceBundle;
 
 import static java.lang.Double.parseDouble;
 
@@ -49,26 +51,27 @@ public class CreateServiceController {
 
     @FXML
     public void initialize(){
+
         Repository repo = Repository.getRepository();
         repo.deserialize("users.repo");
-        CompanyOwner co = SessionData.getLoggedCompanyOwner();
+        String co = SessionData.loggedCompanyOwner.getNIF();
 
-        List<Clinic> clinics = repo.getCompanieClinicsMap().get(co);
+
+        List<Clinic> clinics = repo.getClinicsPerCompanyOner().get(co);
+        List<String> clinicNames = new ArrayList<>();
         System.out.println("Number of clinics: " + (clinics != null ? clinics.size() : 0));
 
-        List<String> clinicNames = new ArrayList<>();
-
-        if(clinics != null){
+        if (clinics != null) {
+            // Your existing code to populate clinicNames
             for (Clinic c : clinics) {
                 clinicNames.add(c.getName());
             }
-
-            ObservableList<String> clinicNamesList = FXCollections.observableArrayList(clinicNames);
-            clinicChoiceBox.setItems(clinicNamesList);
         }
 
-    }
+        ObservableList<String> observableList = FXCollections.observableArrayList(clinicNames);
+        clinicChoiceBox.setItems(observableList);
 
+    }
     @FXML
     public void registerService(ActionEvent event) {
         if(checkName(event) && checkPrice(event) && checkClinicSelection(event)) {
@@ -82,10 +85,13 @@ public class CreateServiceController {
             service.setClinic(selectedClinic);
 
 
+
             double price = parseDouble(priceField.getText());
 
             if(selectedClinic != null) {
                 ServiceBLL.createService(service, selectedClinic);
+                System.out.println(Repository.getRepository().getServices().get(selectedClinic.getNIF()).getServiceName());
+                System.out.println(Repository.getRepository().getServices().get(selectedClinic.getNIF()).getServicePrice());
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/companyOwnerMenu.fxml"));
                     Scene regCena = new Scene(root);
@@ -97,9 +103,8 @@ public class CreateServiceController {
                     e.printStackTrace();
                 }
             }
-            Repository repo = Repository.getRepository();
-            repo.serialize("users.repo");
-            System.out.println(repo.getCompanieClinicsMap().get(selectedClinic.getCompany()));
+
+
         }
 
     }
@@ -152,4 +157,5 @@ public class CreateServiceController {
             return true;
         }
     }
+
 }
