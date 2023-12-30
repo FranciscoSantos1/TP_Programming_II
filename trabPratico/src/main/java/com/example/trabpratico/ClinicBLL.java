@@ -9,7 +9,7 @@ public class ClinicBLL {
         Repository repo = Repository.getRepository();
         repo.deserialize("users.repo");
 
-        Map<String, List<Clinic>> clinicsPerCompanyOner = repo.getClinicsPerCompanyOner();
+        Map<String, List<Clinic>> clinicsPerCompanyOwner = repo.getClinicsPerCompanyOwner();
 
         // Check if the company already has clinics
         List<Clinic> companyClinics = repo.getCompanieClinicsMap().get(company);
@@ -18,14 +18,14 @@ public class ClinicBLL {
             repo.getCompanieClinicsMap().put(company, companyClinics);
         }
 
-       List<Clinic> clinicsOwned = clinicsPerCompanyOner.get(company.getCompanyOwner().getNIF());
+       List<Clinic> clinicsOwned = clinicsPerCompanyOwner.get(company.getCompanyOwner().getNIF());
         if(clinicsOwned == null){
             clinicsOwned = new ArrayList<>();
-            clinicsPerCompanyOner.put(company.getCompanyOwner().getNIF(), clinicsOwned);
+            clinicsPerCompanyOwner.put(company.getCompanyOwner().getNIF(), clinicsOwned);
         }
 
-        clinicsOwned.add(clinic);
         companyClinics.add(clinic);
+        clinicsOwned.add(clinic);
 
 
         repo.getClinicsMap().put(company.getCompanyOwner().getNIF(), clinic);

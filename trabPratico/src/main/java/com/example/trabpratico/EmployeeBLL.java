@@ -5,7 +5,8 @@ import java.util.Map;
 public class EmployeeBLL {
     public static void createEmployee(Employee employee, Clinic clinic){
         employee.setClinic(clinic);
-        Repository.getRepository().getEmployees().put(employee.getNIF(), employee);
+        Repository.getRepository().getEmployees().put(clinic.getNIF(), employee);
+
 
         Map<Clinic, List<Employee>> companyListMap = Repository.getRepository().getEmployeesClinicMap();
 
@@ -16,7 +17,8 @@ public class EmployeeBLL {
         }
 
         employees.add(employee);
-
+        employee.getClinic().getEmployees().add(employee);
+//        clinic.getEmployees().add(employee);
 
         System.out.println("Funcionário criado com sucesso!!!");
         Repository.getRepository().serialize("users.repo");

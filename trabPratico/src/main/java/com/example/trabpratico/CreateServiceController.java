@@ -11,10 +11,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 import static java.lang.Double.parseDouble;
 
@@ -57,7 +55,7 @@ public class CreateServiceController {
         String co = SessionData.loggedCompanyOwner.getNIF();
 
 
-        List<Clinic> clinics = repo.getClinicsPerCompanyOner().get(co);
+        List<Clinic> clinics = repo.getClinicsPerCompanyOwner().get(co);
         List<String> clinicNames = new ArrayList<>();
         System.out.println("Number of clinics: " + (clinics != null ? clinics.size() : 0));
 
@@ -114,7 +112,7 @@ public class CreateServiceController {
         Repository repo = Repository.getRepository();
         repo.deserialize("users.repo");
 
-        List<Clinic> clinics = repo.getClinicsPerCompanyOner().get(co);
+        List<Clinic> clinics = repo.getClinicsPerCompanyOwner().get(co);
 
         for(Clinic c : clinics) {
             if(c.getName().equals(clinicName)) {

@@ -16,7 +16,7 @@ public class Customer extends User{
         for(Appointment ap: this.appointments){
             System.out.println("\n\n");
             System.out.println("Numero consulta: " + ap.getIdConsulta());
-            System.out.println("Clinica: " + ap.getClinicName());
+            System.out.println("Clinica: " + ap.getClinic().getName());
             System.out.println("Data:" + ap.getAppointmentDate());
             System.out.println("Servicos: " + ap.getServices());
             System.out.println("Estado: " + ap.getState());

@@ -52,15 +52,20 @@ public class CreateCompanyController {
         if(checkName(event) && checkNIF(event) && checkPhoneNumber(event)) {
             Company company = new Company();
 
+            CompanyOwner co = SessionData.getLoggedCompanyOwner();
+
+            Repository repo = new Repository();
+            repo.deserialize("users.repo");
+
             company.setName(companyNameField.getText());
             company.setAddress(addressField.getText());
             company.setLocation(locationField.getText());
             company.setNIF(NIFField.getText());
             company.setPhoneNumber(phoneNumberField.getText());
 
-            CompanyBLL.createCompany(company, SessionData.loggedCompanyOwner);
+            CompanyBLL.createCompany(company, co);
 
-            System.out.println(Repository.getRepository().getCompany().get(SessionData.loggedCompanyOwner.getNIF()).getName());
+            System.out.println(co.getCompanies().size());
 
 
 

@@ -3,11 +3,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 public class Main extends Application {
@@ -143,10 +141,10 @@ public class Main extends Application {
                 System.out.println("NIF: " + aux.getNIF());
                 System.out.println("userName: " + aux.getUsername());
                 System.out.println("password: " + aux.getPassword());
-                System.out.println("Morada: " + aux.getAddress());
                 System.out.println("Nº Telefone: " + aux.getPhoneNumber());
                 System.out.println("tipo: " + aux.getEmployeeType().name());
-                System.out.println("Empresa: ");}
+                System.out.println("Empresa: " + aux.getClinic().getName());
+            }
 
         }
 
@@ -179,7 +177,7 @@ public class Main extends Application {
         for (Appointment aux : repo.getAppointments().values()) {
             System.out.println("----------------------------------------");
             System.out.println("Consulta nº: " + aux.getIdConsulta());
-            System.out.println("Clinica: " + aux.getClinicName());
+            System.out.println("Clinica: " + aux.getClinic().getName());
             System.out.println("Data:" + aux.getAppointmentDate());
             System.out.println("Serviços: " + aux.getServices());
             System.out.println("Estado: " + aux.getState());
@@ -227,7 +225,7 @@ public class Main extends Application {
     }*/
         int b = 0;
 
-        for(List<Clinic> c : repo.getClinicsPerCompanyOner().values()){
+        for(List<Clinic> c : repo.getClinicsPerCompanyOwner().values()){
             for(Clinic clinic : c){
                 System.out.println("----------------------------------------");
                 System.out.println("Clinica nº: " + ++b);

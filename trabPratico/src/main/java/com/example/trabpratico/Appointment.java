@@ -1,12 +1,13 @@
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Set;
 
 public class Appointment implements Serializable {
     private int idConsulta;
-    private Date appointmentDate;
+    private LocalDate appointmentDate;
     private String employee;
-    private String clinicName;
+    private Clinic clinic;
     private double totalValue;
     private Customer customer;
     private AppointmentState state;
@@ -15,10 +16,10 @@ public class Appointment implements Serializable {
 
     public Appointment(){};
 
-    public Appointment(Date appointmentDate, String employee, String clinicName, double totalValue, Customer customer, AppointmentState state, int idConsulta, Service services) {
+    public Appointment(LocalDate appointmentDate, String employee, Clinic clinic, double totalValue, Customer customer, AppointmentState state, int idConsulta, Service services) {
         this.appointmentDate = appointmentDate;
         this.employee = employee;
-        this.clinicName = clinicName;
+        this.clinic = clinic;
         this.totalValue = totalValue;
         this.customer = customer;
         this.state = state;
@@ -26,11 +27,11 @@ public class Appointment implements Serializable {
         this.services = services;
     }
 
-    public String getAppointmentDate() {
-        return this.appointmentDate.toString();
+    public LocalDate getAppointmentDate() {
+        return this.appointmentDate;
     }
 
-    public void setAppointmentDate(Date date) {
+    public void setAppointmentDate(LocalDate date) {
         this.appointmentDate = date;
     }
 
@@ -42,12 +43,12 @@ public class Appointment implements Serializable {
         this.employee = employee;
     }
 
-    public String getClinicName() {
-        return clinicName;
+    public Clinic getClinic() {
+        return clinic;
     }
 
-    public void setClinicName(String clinicName) {
-        this.clinicName = clinicName;
+    public void setClinic(Clinic clinic) {
+        this.clinic = clinic;
     }
 
     public double getTotalValue() {

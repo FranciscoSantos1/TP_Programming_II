@@ -27,7 +27,7 @@
                 </Label>
                 <Button fx:id="goBack" layoutX="558.0" layoutY="460.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="128.0" text="Voltar" />
             <DatePicker fx:id="datePicker" layoutX="44.0" layoutY="242.0" prefHeight="30.0" prefWidth="200.0" />
-            <ChoiceBox fx:id="clinicChoiceBox" layoutX="44.0" layoutY="126.0" prefHeight="30.0" prefWidth="200.0" />
+            <ChoiceBox fx:id="clinicChoiceBox" layoutX="44.0" layoutY="126.0" onAction="#updateEmployeeChoiceBox" onDragExited="#updateEmployeeChoiceBox" prefHeight="30.0" prefWidth="200.0" />
             <Label layoutX="44.0" layoutY="96.0" prefHeight="30.0" prefWidth="62.0" text="Clinica">
                <font>
                   <Font size="15.0" />

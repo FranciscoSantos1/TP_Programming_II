@@ -6,8 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
@@ -15,7 +13,6 @@ import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class CreateEmployeeController {
 
@@ -70,10 +67,11 @@ public class CreateEmployeeController {
         UserTypeChoiceBox.setItems(UserTypeList);
 
         Repository repo = Repository.getRepository();
+        CompanyOwner co = SessionData.getLoggedCompanyOwner();
         repo.deserialize("users.repo");
-        String co = SessionData.loggedCompanyOwner.getNIF();
+        String coNIF = SessionData.loggedCompanyOwner.getNIF();
 
-        List<Clinic> clinics = repo.getClinicsPerCompanyOner().get(co);
+        List<Clinic> clinics = repo.getClinicsPerCompanyOwner().get(coNIF);
         List<String> clinicNames = new ArrayList<>();
 
         if (clinics != null) {
@@ -95,7 +93,7 @@ public class CreateEmployeeController {
         if(checkAllFields(event)) {
             Employee employee = new Employee();
 
-            employee.setAddress(fullNameField.getText());
+            employee.setFullName(fullNameField.getText());
             employee.setUsername(usernameField.getText());
             employee.setPassword(passwordField.getText());
             employee.setNIF(NIFField.getText());
@@ -130,7 +128,7 @@ public class CreateEmployeeController {
         Repository repo = Repository.getRepository();
         repo.deserialize("users.repo");
 
-        List<Clinic> clinics = repo.getClinicsPerCompanyOner().get(co);
+        List<Clinic> clinics = repo.getClinicsPerCompanyOwner().get(co);
 
         for(Clinic c : clinics) {
             if(c.getName().equals(clinicName)) {

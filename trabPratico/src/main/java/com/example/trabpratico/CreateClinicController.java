@@ -91,7 +91,7 @@ public class CreateClinicController {
         Repository repo = Repository.getRepository();
         repo.deserialize("users.repo");
         CompanyOwner co = new CompanyOwner();
-        co = SessionData.loggedCompanyOwner;
+        co = SessionData.getLoggedCompanyOwner();
 
         for (CompanyOwner co1 : repo.getCompanyFromCompanyOwner().keySet()) {
             if (co1.getUsername().equals(co.getUsername())) {

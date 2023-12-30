@@ -49,7 +49,7 @@ public class    Repository implements Serializable {
     public Map<Company, List<Clinic>> getCompanieClinicsMap(){return CompanieClinicsMap;}
     public Map<String, Clinic> getClinicsMap(){return clinicsMap;}
     public Map<Clinic, List<Employee>> getEmployeesClinicMap(){return employeesClinicMap;}
-    public Map<String, List<Clinic>> getClinicsPerCompanyOner(){return clinicsPerCompanyOner;}
+    public Map<String, List<Clinic>> getClinicsPerCompanyOwner(){return clinicsPerCompanyOner;}
 
     public static Repository getRepository(){
 

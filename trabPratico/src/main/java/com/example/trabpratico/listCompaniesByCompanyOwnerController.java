@@ -80,7 +80,7 @@ public class listCompaniesByCompanyOwnerController {
 
                     if (value instanceof List) {
                         List<Company> companies = (List<Company>) value;
-                        System.out.println(repo.getCompanyFromCompanyOwner().get(co).size());
+                        System.out.println(companyOwner.getCompanies().size());
 
                         for (Company c : companies) {
                             companyList.add(c);
