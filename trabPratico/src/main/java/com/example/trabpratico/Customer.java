@@ -18,7 +18,7 @@ public class Customer extends User{
             System.out.println("Numero consulta: " + ap.getIdConsulta());
             System.out.println("Clinica: " + ap.getClinic().getName());
             System.out.println("Data:" + ap.getAppointmentDate());
-            System.out.println("Servicos: " + ap.getServices());
+            System.out.println("Servicos: " + ap.getService());
             System.out.println("Estado: " + ap.getState());
             System.out.println("Valor: " + ap.getTotalValue());
             System.out.println("Funcionario: " + ap.getEmployee());

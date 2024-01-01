@@ -186,7 +186,7 @@ public class Main extends Application {
                 System.out.println("Consulta nº: " + aux.getIdConsulta());
                 System.out.println("Clinica: " + aux.getClinic().getName());
                 System.out.println("Data:" + aux.getAppointmentDate());
-                System.out.println("Serviços: " + aux.getServices());
+                System.out.println("Serviços: " + aux.getService());
                 System.out.println("Estado: " + aux.getState());
                 System.out.println("Valor: " + aux.getTotalValue());
                 System.out.println("Funcionario: " + aux.getEmployee());

@@ -43,14 +43,14 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="serviceChoiceBox" layoutX="44.0" layoutY="302.0" prefHeight="30.0" prefWidth="200.0" />
+            <ChoiceBox fx:id="serviceChoiceBox" layoutX="44.0" layoutY="302.0" onAction="#updatePriceField" onDragOver="#updatePriceField" prefHeight="30.0" prefWidth="200.0" />
             <Label layoutX="40.0" layoutY="344.0" prefHeight="39.0" prefWidth="134.0" text="Total a pagar:">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Button fx:id="makeAppointmentButton" layoutX="174.0" layoutY="441.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="128.0" text="Marcar Consulta" />
-            <Label layoutX="54.0" layoutY="383.0" prefHeight="32.0" prefWidth="201.0" text="Label" />
+            <Button fx:id="makeAppointmentButton" layoutX="174.0" layoutY="441.0" mnemonicParsing="false" onAction="#makeAppointment" prefHeight="26.0" prefWidth="128.0" text="Marcar Consulta" />
+            <Label fx:id="priceField" layoutX="54.0" layoutY="383.0" prefHeight="32.0" prefWidth="50.0" />
             <Label layoutX="368.0" layoutY="96.0" prefHeight="30.0" prefWidth="90.0" text="Descrição">
                <font>
                   <Font size="15.0" />
@@ -63,6 +63,11 @@
                </font>
             </Label>
             <ChoiceBox fx:id="employeeChoiceBox" layoutX="44.0" layoutY="186.0" prefHeight="30.0" prefWidth="200.0" />
+            <Label layoutX="108.0" layoutY="383.0" prefHeight="33.0" prefWidth="57.0" text="€">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
             </children>
         </AnchorPane>
     </left>

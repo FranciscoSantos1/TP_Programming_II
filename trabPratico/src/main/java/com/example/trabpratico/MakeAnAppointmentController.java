@@ -5,15 +5,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+
+import static javax.accessibility.AccessibleRole.ALERT;
 
 
 public class MakeAnAppointmentController {
@@ -39,6 +37,9 @@ public class MakeAnAppointmentController {
     private ChoiceBox<String> serviceChoiceBox;
 
     @FXML
+    private Label priceField;
+
+    @FXML
     void goBack(javafx.event.ActionEvent ActionEvent) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/customerMenu.fxml"));
@@ -54,16 +55,77 @@ public class MakeAnAppointmentController {
 
     @FXML
     void makeAppointment(javafx.event.ActionEvent ActionEvent) {
-        Appointment appointment = new Appointment();
-        for (List<Clinic> clinic : Repository.getRepository().getClinicsPerCompanyOwner().values()) {
-            for (Clinic clinic1 : clinic) {
-                if (clinic1.getName().equals(clinicChoiceBox.getValue())) {
-                    appointment.setClinic(clinic1);
+
+        try{
+            Appointment appointment = new Appointment();
+            appointment.setState(AppointmentState.PROCESSED);
+            appointment.setCustomer(SessionData.getLoggedCustomer());
+
+            for (List<Clinic> clinic : Repository.getRepository().getClinicsPerCompanyOwner().values()) {
+                for (Clinic clinic1 : clinic) {
+                    if (clinic1.getName().equals(clinicChoiceBox.getValue())) {
+                        appointment.setClinic(clinic1);
+                    }
                 }
             }
+            appointment.setAppointmentDate(datePicker.getValue());
+            appointment.setDescription(descriptionField.getText());
+            appointment.setTotalValue(Double.parseDouble(priceField.getText()));
+
+            for (List<Service> services : Repository.getRepository().getServicesClinicMap().values()) {
+                for (Service service : services) {
+                    if (service.getServiceName().equals(serviceChoiceBox.getValue())) {
+                        appointment.setService(service);
+                    }
+                }
+            }
+
+            for (List<Employee> employees : Repository.getRepository().getEmployeesClinicMap().values()) {
+                for (Employee employee : employees) {
+                    if (employee.getFullName().equals(employeeChoiceBox.getValue())) {
+                        appointment.setEmployee(employee);
+                    }
+                }
+            }
+
+
+            if(clinicChoiceBox.getValue() == null){
+                checkClinicSelection(ActionEvent);
+                return;
+            }
+            if(employeeChoiceBox.getValue() == null){
+                checkEmployeeSelection(ActionEvent);
+                return;
+            }
+            if(serviceChoiceBox.getValue() == null){
+                checkServiceSelection(ActionEvent);
+                return;
+            }
+            if(datePicker.getValue() == null || datePicker.getValue().isBefore(java.time.LocalDate.now())){
+                checkDate(ActionEvent);
+                datePicker.setValue(null);
+                return;
+            }
+
+
+
+
+            if (clinicChoiceBox.getValue() != null && employeeChoiceBox.getValue() != null && serviceChoiceBox.getValue() != null) {
+                AppointmentBLL.createAppointment(appointment, appointment.getCustomer());
+                try {
+                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/customerMenu.fxml"));
+                    Scene regCena = new Scene(root);
+                    Stage stage = (Stage) ((Node) ActionEvent.getSource()).getScene().getWindow();
+                    stage.setScene(regCena);
+                    stage.setTitle("Menu Cliente");
+                    stage.show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        appointment.setAppointmentDate(datePicker.getValue());
-        appointment.setDescription(descriptionField.getText());
 
     }
 
@@ -108,42 +170,48 @@ public class MakeAnAppointmentController {
         return clinic;
     }
 
-    /*@FXML
-    private void updateEmployeeChoiceBox() {
-        System.out.println("updateEmployeeChoiceBox called"); // Check if this line gets printed
-
-        Clinic selectedClinic = getSelectedClinic();
-        System.out.println(selectedClinic.getName());
-
-        if (selectedClinic != null) {
-            List<String> employeesNames = new ArrayList<>();
-            for (List<Clinic> clinic : Repository.getRepository().getClinicsPerCompanyOwner().values()) {
-                for (Clinic clinic1 : clinic) {
-                    if(clinic1.getName().equals(selectedClinic.getName())){
-                        for(Employee employee : clinic1.getEmployees()){
-                            employeesNames.add(employee.getFullName());
-                            System.out.println(employee.getFullName());
-                        }
-
-                    }
+    @FXML
+    public Service getSelectedService() {
+        Service service = new Service();
+        for (List<Service> serviceList : Repository.getRepository().getServicesClinicMap().values()) {
+            for (Service service1 : serviceList) {
+                if (service1.getServiceName().equals(serviceChoiceBox.getValue())) {
+                    service = service1;
                 }
             }
+        }
+        return service;
+    }
 
+    /*@FXML
+    public void updatePriceField() {
+        Service service = getSelectedService();
+        System.out.println("Selected Service: " + service.getServiceName());
+        for (List<Service> serviceList : Repository.getRepository().getServicesClinicMap().values()) {
+            for (Service service1 : serviceList) {
+                if (service1.getServiceName().equals(serviceChoiceBox.getValue())) {
+                    service = service1;
+                }
+            }
+        }
+        priceField.setText(String.valueOf(service.getServicePrice()));
+        priceField.setVisible(true);
+    }*/
 
-
-*//*
-            for (Employee employee : selectedClinic.getEmployees()) {
-                employeesNames.add(employee.getFullName());
-                System.out.println(employee.getEmployeeType()); // Check if this line gets printed
-            }*//*
-
-            ObservableList<String> employees = FXCollections.observableArrayList(employeesNames);
-            employeeChoiceBox.setItems(employees);
+    @FXML
+    public void updatePriceField() {
+        System.out.println("updatePriceField called");
+        Service service = getSelectedService();
+        if (service != null) {
+            priceField.setText(String.valueOf(service.getServicePrice()));
+            priceField.setVisible(true);
+        } else {
+            // Handle the case where the selected service is null
+            System.out.println("Selected Service is null.");
         }
     }
 
-}
-*/
+
     @FXML
     private void updateEmployeeChoiceBox() {
         System.out.println("updateEmployeeChoiceBox called"); // Check if this line gets printed
@@ -174,6 +242,25 @@ public class MakeAnAppointmentController {
 
             ObservableList<String> employees = FXCollections.observableArrayList(employeesNames);
             employeeChoiceBox.setItems(employees);
+        }
+    }
+
+    @FXML
+    public void checkDate(javafx.event.ActionEvent ActionEvent){
+        if(datePicker.getValue() == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Erro");
+            alert.setContentText("Selecione uma data");
+            alert.showAndWait();
+        }
+
+        if(datePicker.getValue().isBefore(java.time.LocalDate.now())){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Erro");
+            alert.setContentText("Selecione uma data valida");
+            alert.showAndWait();
         }
     }
 
@@ -214,6 +301,39 @@ public class MakeAnAppointmentController {
     private void handleChoixeBoxAction(javafx.event.ActionEvent ActionEvent){
         updateEmployeeChoiceBox();
         updateServiceChoiceBox();
+    }
+
+    @FXML
+    private void checkClinicSelection(javafx.event.ActionEvent ActionEvent){
+        if(clinicChoiceBox.getValue() == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Erro");
+            alert.setContentText("Selecione uma clinica");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void checkEmployeeSelection(javafx.event.ActionEvent ActionEvent){
+        if(employeeChoiceBox.getValue() == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Erro");
+            alert.setContentText("Selecione um funcionario");
+            alert.showAndWait();
+        }
+    }
+
+    @FXML
+    private void checkServiceSelection(javafx.event.ActionEvent ActionEvent){
+        if(serviceChoiceBox.getValue() == null){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Erro");
+            alert.setHeaderText("Erro");
+            alert.setContentText("Selecione um servico");
+            alert.showAndWait();
+        }
     }
 
 }
