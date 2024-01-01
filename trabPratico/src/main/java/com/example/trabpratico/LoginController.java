@@ -10,6 +10,7 @@ import javax.security.auth.login.LoginException;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.util.List;
 
 public class LoginController {
 
@@ -90,7 +91,22 @@ public class LoginController {
                     stage.show();
                 }
             }
-            for (Employee e : repo.getEmployees().values()) {
+            for(List<Employee> employees : repo.getEmployeesClinicMap().values()){
+                for(Employee e : employees){
+                    if (usernameField.getText().equalsIgnoreCase(e.getUsername()) && passwordField.getText().equals(e.getPassword())) {
+                        sd.loggedEmployee = e;
+                        found = true;
+                        System.out.println("Login com Sucesso!");
+                        Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/employeeMenu.fxml"));
+                        Scene regCena = new Scene(root);
+                        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+                        stage.setScene(regCena);
+                        stage.setTitle("Menu Funcionario");
+                        stage.show();
+                    }
+                }
+            }
+            /*for (Employee e : repo.getEmployees().values()) {
                 if (usernameField.getText().equalsIgnoreCase(e.getUsername()) && passwordField.getText().equals(e.getPassword())) {
                     sd.loggedEmployee = e;
                     found = true;
@@ -102,7 +118,7 @@ public class LoginController {
                     stage.setTitle("Menu Funcionario");
                     stage.show();
                 }
-            }
+            }*/
             if (!found) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");

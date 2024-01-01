@@ -8,7 +8,7 @@ public class AppointmentBLL {
     public static void createAppointment(Appointment appointment, Customer customer) {
         appointment.setState(AppointmentState.PROCESSADA);
         appointment.setCustomer(customer);
-        appointment.setIdConsulta(Repository.getRepository().getAppointments().size() + 1);
+        appointment.setIdConsulta(Repository.getRepository().getAppointments().values().size() + 1);
 
         Map<String, List<Appointment>> appointmentsList = Repository.getRepository().getAppointments();
 
@@ -19,6 +19,7 @@ public class AppointmentBLL {
         }
 
         appointments.add(appointment);
+
 
 
         Repository.getRepository().getCustomers().get(customer.getNIF()).getAppointments().add(appointment);
