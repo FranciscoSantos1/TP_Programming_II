@@ -1,7 +1,9 @@
 import java.io.Serializable;
 
 public enum AppointmentState implements Serializable {
-    PROCESSED,
-    NOTPAYED,
-    FINISHED
+    PROCESSADA,
+    REALIZADA,      //realiza mas nao paga
+    PAGA,           // paga mas nao realizada
+    FINALIZADA,     //paga e realizada
+    CANCELADA
 }

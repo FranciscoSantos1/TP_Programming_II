@@ -46,7 +46,7 @@ public class MakeAnAppointmentController {
             Scene regCena = new Scene(root);
             Stage stage = (Stage) ((Node) ActionEvent.getSource()).getScene().getWindow();
             stage.setScene(regCena);
-            stage.setTitle("Menu Empresario");
+            stage.setTitle("Menu Cliente");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,7 +58,7 @@ public class MakeAnAppointmentController {
 
         try{
             Appointment appointment = new Appointment();
-            appointment.setState(AppointmentState.PROCESSED);
+            appointment.setState(AppointmentState.PROCESSADA);
             appointment.setCustomer(SessionData.getLoggedCustomer());
 
             for (List<Clinic> clinic : Repository.getRepository().getClinicsPerCompanyOwner().values()) {

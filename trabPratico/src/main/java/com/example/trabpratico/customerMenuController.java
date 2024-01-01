@@ -82,7 +82,7 @@ public class customerMenuController {
     @FXML
     void customerPayments(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/customerPayments.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/PayAppointments.fxml"));
             Scene regCena = new Scene (root);
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.setScene(regCena);
