@@ -135,7 +135,7 @@ public class CreateServiceController {
 
     @FXML
     public boolean checkPrice(ActionEvent event) {
-        Double price = parseDouble(priceField.getText());
+        double price = parseDouble(priceField.getText());
         if(priceField.getText().isEmpty() || price < 0 ){
             priceField.setStyle("-fx-border-color: red");
             return false;

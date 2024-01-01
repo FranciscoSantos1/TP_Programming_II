@@ -139,10 +139,21 @@ public class CreateEmployeeController {
     }
     @FXML
     public boolean checkAllFields(javafx.event.ActionEvent event) {
-        if(checkName(event) && checkPassword(event) && checkNIF(event) && checkPhoneNumber(event) && checkClinic(event) && checkCheckBox(event)) {
+        if(checkName(event) && checkPassword(event) && checkNIF(event) && checkPhoneNumber(event) && checkClinic(event) && checkCheckBox(event) && checkFullName(event)) {
             return true;
         } else {
             return false;
+        }
+    }
+
+    @FXML
+    public boolean checkFullName(javafx.event.ActionEvent event) {
+        if(fullNameField.getText().isEmpty()) {
+            fullNameField.setStyle("-fx-border-color: red");
+            return false;
+        } else {
+            fullNameField.setStyle("-fx-border-color: green");
+            return true;
         }
     }
 

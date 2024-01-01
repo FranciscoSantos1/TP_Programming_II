@@ -10,7 +10,7 @@ public class EmployeeBLL {
 
         Map<Clinic, List<Employee>> companyListMap = Repository.getRepository().getEmployeesClinicMap();
 
-        List<Employee> employees = companyListMap.get(employee.getClinic());
+        List<Employee> employees = companyListMap.get(clinic);
         if(employees == null){
             employees = new ArrayList<>();
             companyListMap.put(employee.getClinic(), employees);

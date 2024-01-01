@@ -168,23 +168,32 @@ public class Main extends Application {
 
         }
 
+        for(Clinic c : repo.getServicesClinicMap().keySet()) {
+            System.out.println(c.getName());
+            for(Service s : repo.getServicesClinicMap().get(c)) {
+                System.out.println(s.getServiceName());
+            }
+        }
         System.out.println("--------- FIM DOS SERVIÇOS ---------");
 
 
         System.out.println("\n----------------------------------------");
         System.out.println("------| Dados das CONSULTAS |---------");
 
-        for (Appointment aux : repo.getAppointments().values()) {
-            System.out.println("----------------------------------------");
-            System.out.println("Consulta nº: " + aux.getIdConsulta());
-            System.out.println("Clinica: " + aux.getClinic().getName());
-            System.out.println("Data:" + aux.getAppointmentDate());
-            System.out.println("Serviços: " + aux.getServices());
-            System.out.println("Estado: " + aux.getState());
-            System.out.println("Valor: " + aux.getTotalValue());
-            System.out.println("Funcionario: " + aux.getEmployee());
-            System.out.println("Cliente: " + aux.getCustomer().getFullName());
+        for(List<Appointment> appointments : repo.getAppointments().values()){
+            for(Appointment aux : appointments){
+                System.out.println("----------------------------------------");
+                System.out.println("Consulta nº: " + aux.getIdConsulta());
+                System.out.println("Clinica: " + aux.getClinic().getName());
+                System.out.println("Data:" + aux.getAppointmentDate());
+                System.out.println("Serviços: " + aux.getServices());
+                System.out.println("Estado: " + aux.getState());
+                System.out.println("Valor: " + aux.getTotalValue());
+                System.out.println("Funcionario: " + aux.getEmployee());
+                System.out.println("Cliente: " + aux.getCustomer().getFullName());
+            }
         }
+
 
         System.out.println("--------- FIM DAS CONSULTAS ---------");
 

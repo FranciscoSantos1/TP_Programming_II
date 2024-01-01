@@ -57,8 +57,8 @@ public class CreateClinicController {
         }
     }
 
-
-    /*@FXML
+/*
+    @FXML
     public void initialize() {
         Repository repo = Repository.getRepository();
         repo.deserialize("users.repo");
@@ -67,11 +67,11 @@ public class CreateClinicController {
 
         List<String> companiesNames = new ArrayList<>();
 
-        *//*for(Company c : repo.getCompany().values()){
+        for(Company c : repo.getCompany().values()){
             if(c.getCompanyOwner().getNIF().equals(co.getNIF())){
                 companiesNames.add(c.getName());
             }
-        }*//*
+        }
 
 
         List<Company> companies = co.getCompanies();
@@ -88,10 +88,12 @@ public class CreateClinicController {
 
     @FXML
     public void initialize() {
-        Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
         CompanyOwner co = new CompanyOwner();
         co = SessionData.getLoggedCompanyOwner();
+        Repository repo = Repository.getRepository();
+        repo.deserialize("users.repo");
+        List<String> companiesNames = new ArrayList<>();
+
 
         for (CompanyOwner co1 : repo.getCompanyFromCompanyOwner().keySet()) {
             if (co1.getUsername().equals(co.getUsername())) {
@@ -100,14 +102,13 @@ public class CreateClinicController {
                     if (value instanceof List) {
                         List<Company> companies = (List<Company>) value;
                         System.out.println(repo.getCompanyFromCompanyOwner().get(co1).size());
-                        List<String> companiesNames = new ArrayList<>();
+
 
                         for (Company c : companies) {
                             companiesNames.add(c.getName());
                         }
 
-                        ObservableList<String> observableList = FXCollections.observableArrayList(companiesNames);
-                        companyField.setItems(observableList);
+
                     }
 
                 } catch (ClassCastException e) {
@@ -115,6 +116,8 @@ public class CreateClinicController {
                 }
             }
         }
+        ObservableList<String> observableList = FXCollections.observableArrayList(companiesNames);
+        companyField.setItems(observableList);
     }
 
     @FXML
@@ -161,12 +164,20 @@ public class CreateClinicController {
         CompanyOwner co = SessionData.loggedCompanyOwner;
         List<Company> companies = co.getCompanies();
 
-        for (Company c : companies) {
-            if (c.getName().equals(companyName)) {
-                return c;
+        for(List<Company> c : Repository.getRepository().getCompanyFromCompanyOwner().values()) {
+            for(Company c1 : c) {
+                if(c1.getName().equals(companyName)) {
+                    return c1;
+                }
             }
         }
 
+        /*for (Company c : companies) {
+            if (c.getName().equalsIgnoreCase(companyName)) {
+                return c;
+            }
+        }
+*/
         return null; // Company not found
     }
 

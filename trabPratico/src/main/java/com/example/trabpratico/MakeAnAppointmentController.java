@@ -154,16 +154,18 @@ public class MakeAnAppointmentController {
         if (selectedClinic != null) {
             List<String> employeesNames = new ArrayList<>();
 
-            List<Clinic> clinicsOwned = Repository.getRepository().getClinicsPerCompanyOwner().get(selectedClinic.getCompany().getCompanyOwner().getNIF());
-            System.out.println(clinicsOwned.size()); // Print number of clinics owned by the company owner
-            if (clinicsOwned != null) {
-                for (Clinic clinic : clinicsOwned) {
-                    System.out.println("Processing clinic: " + clinic.getName()); // Print clinic information
-
-                    System.out.println("Clinic employees: " + clinic.getEmployees().size()); // Print clinic employees list
-                    for (Employee employee : clinic.getEmployees()) {
-                        employeesNames.add(employee.getFullName());
-                        System.out.println("EmployeeType asdas: " + employee.getEmployeeType());
+            for(List<Clinic> clinics : Repository.getRepository().getClinicsPerCompanyOwner().values()){
+                for(Clinic clinic : clinics){
+                    if(clinic.getName().equals(selectedClinic.getName())){
+                        System.out.println("Clinic: " + clinic.getName()); // Print clinic information
+                        for(List<Employee> employees : Repository.getRepository().getEmployeesClinicMap().values()){
+                            for(Employee employee : employees){
+                                if(employee.getClinic().getName().equals(clinic.getName())){
+                                    employeesNames.add(employee.getFullName());
+                                    System.out.println("EmployeeName: " + employee.getUsername());
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -174,4 +176,44 @@ public class MakeAnAppointmentController {
             employeeChoiceBox.setItems(employees);
         }
     }
+
+    @FXML
+    private void updateServiceChoiceBox() {
+        System.out.println("updateServiceChoiceBox called"); // Check if this line gets printed
+
+        Clinic selectedClinic = getSelectedClinic();
+        System.out.println("Selected Clinic: " + selectedClinic); // Print selected clinic information
+
+        if(selectedClinic != null){
+            List<String> servicesNames = new ArrayList<>();
+
+            for(List<Clinic> clinics : Repository.getRepository().getClinicsPerCompanyOwner().values()){
+                for(Clinic clinic : clinics){
+                    if(clinic.getName().equals(selectedClinic.getName())){
+                        System.out.println("Clinic: " + clinic.getName()); // Print clinic information
+                        for(List<Service> services : Repository.getRepository().getServicesClinicMap().values()){
+                            for(Service service : services){
+                                if(service.getClinic().getName().equals(selectedClinic.getName())){
+                                    servicesNames.add(service.getServiceName());
+                                    System.out.println("ServiceName: " + service.getServiceName());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            System.out.println("Services Names List: " + servicesNames); // Print services names list
+
+            ObservableList<String> services = FXCollections.observableArrayList(servicesNames);
+            serviceChoiceBox.setItems(services);
+        }
+    }
+
+    @FXML
+    private void handleChoixeBoxAction(javafx.event.ActionEvent ActionEvent){
+        updateEmployeeChoiceBox();
+        updateServiceChoiceBox();
+    }
+
 }
