@@ -94,6 +94,7 @@ public class RegisterController {
                 co1.setUsername(usernameField.getText());
                 co1.setPassword(passwordField.getText());
 
+
                 CompanyOwnerBLL.createCompanyOwner((CompanyOwner) co1);
 
             }
@@ -111,7 +112,7 @@ public class RegisterController {
         }else if (checkUsername(event) == false) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
-            alert.setHeaderText("Por favor, insira um username!");
+            alert.setHeaderText("Username errado!");
             alert.show();
             return;
         }else if (checkPassword(event) == false) {
@@ -158,19 +159,49 @@ public class RegisterController {
     public boolean checkUsername(javafx.event.ActionEvent actionEvent) {
         Repository repo = Repository.getRepository();
         repo.deserialize("users.repo");
-        if (usernameField.getText().isEmpty() || repo.getCustomers().values().equals(usernameField.getText()) || repo.getCompanyOwners().values().equals(usernameField.getText()) || repo.getAdmins().values().equals(usernameField.getText()) || repo.getEmployees().values().equals(usernameField.getText())) {
+
+        String enteredUsername = usernameField.getText().trim();
+
+        if (enteredUsername.isEmpty()) {
             usernameField.setStyle("-fx-border-color: red");
             return false;
-
-        } else {
-            usernameField.setStyle("-fx-border-color: green");
-            return true;
         }
+
+        for (Customer customer : repo.getCustomers().values()) {
+            if (enteredUsername.equals(customer.getUsername())) {
+                usernameField.setStyle("-fx-border-color: red");
+                return false;
+            }
+        }
+
+        for (CompanyOwner companyOwner : repo.getCompanyOwners().values()) {
+            if (enteredUsername.equals(companyOwner.getUsername())) {
+                usernameField.setStyle("-fx-border-color: red");
+                return false;
+            }
+        }
+
+        for (Admin admin : repo.getAdmins().values()) {
+            if (enteredUsername.equals(admin.getUsername())) {
+                usernameField.setStyle("-fx-border-color: red");
+                return false;
+            }
+        }
+
+        for (Employee employee : repo.getEmployees().values()) {
+            if (enteredUsername.equals(employee.getUsername())) {
+                usernameField.setStyle("-fx-border-color: red");
+                return false;
+            }
+        }
+
+        usernameField.setStyle("-fx-border-color: green");
+        return true;
     }
 
     @FXML
     public boolean checkPassword(javafx.event.ActionEvent actionEvent) {
-        if (passwordField.getText().isEmpty()) {
+        if (passwordField.getText().isEmpty() ) {
             passwordField.setStyle("-fx-border-color: red");
             return false;
 

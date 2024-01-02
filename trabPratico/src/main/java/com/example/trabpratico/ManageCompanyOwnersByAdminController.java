@@ -1,12 +1,12 @@
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -14,7 +14,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ManageCompanyOwnersByAdminController {
@@ -29,7 +28,7 @@ public class ManageCompanyOwnersByAdminController {
     private Button backButton;
 
     @FXML
-    private TableView<CompanyOwner> customersTable;
+    private TableView<CompanyOwner> companyOwnerTableView;
 
     @FXML
     private Button deleteCompanyOwnerButton;
@@ -65,7 +64,6 @@ public class ManageCompanyOwnersByAdminController {
     @FXML
     public void initialize() {
         Repository repository = Repository.getRepository();
-        repository.deserialize("users.repo");
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         NIFColumn.setCellValueFactory(new PropertyValueFactory<>("NIF"));
@@ -95,20 +93,48 @@ public class ManageCompanyOwnersByAdminController {
         }
 
         ObservableList<CompanyOwner> companyOwnersList = FXCollections.observableArrayList(companyOwners);
-        customersTable.setItems(companyOwnersList);
+        companyOwnerTableView.setItems(companyOwnersList);
     }
 
     @FXML
     void deleteCompanyOwner(javafx.event.ActionEvent event) {
-        CompanyOwner selectedCompanyOwner = customersTable.getSelectionModel().getSelectedItem();
+        CompanyOwner selectedCompanyOwner = companyOwnerTableView.getSelectionModel().getSelectedItem();
         Repository repository = Repository.getRepository();
         repository.deserialize("users.repo");
 
         if (selectedCompanyOwner != null) {
-            repository.getCompanyOwners().remove(selectedCompanyOwner.getNIF());
-            repository.serialize("users.repo");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Confirmação de remoção de dados");
+            alert.setHeaderText("Confirma remoção dos dados?");
+            alert.setContentText("Deseja remover estes dados?");
+            alert.showAndWait();
 
+            if (alert.getResult().getText().equals("OK")) {
+                List<Company> companies = repository.getCompanyFromCompanyOwner().get(selectedCompanyOwner);
+
+                // Check if companies is not null before iterating over it
+                if (companies != null) {
+                    for (Company company : new ArrayList<>(companies)) {
+                        List<Clinic> clinics = repository.getCompanieClinicsMap().get(company);
+
+                        if (clinics != null) {
+                            for (Clinic clinic : new ArrayList<>(clinics)) {
+                                repository.getClinicsMap().remove(clinic.getNIF());
+                            }
+                        }
+
+                        repository.getCompanieClinicsMap().remove(company);
+                        repository.getCompany().remove(company.getNIF());
+                        companies.remove(company);
+                    }
+                }
+
+                repository.getCompanyOwners().remove(selectedCompanyOwner.getNIF());
+                repository.serialize("users.repo");
+                repository.deserialize("users.repo");
+
+                companyOwnerTableView.getItems().remove(selectedCompanyOwner);
+            }
         }
-
     }
 }
