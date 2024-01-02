@@ -15,7 +15,7 @@ public class CompanyBLL {
             Map<String, Company> companyMap = repo.getCompany();
 
             // Check if the companyOwner already has a list of companies
-            List<Company> ownerCompanies = companyFromCompanyOwner.get(company.getCompanyOwner());
+            List<Company> ownerCompanies = companyFromCompanyOwner.get(co);
             if (ownerCompanies == null) {
                 ownerCompanies = new ArrayList<>();
                 companyFromCompanyOwner.put(co, ownerCompanies);
@@ -40,24 +40,4 @@ public class CompanyBLL {
     }
 }
 
-
-
-
-/*import java.util.Map;
-
-public class CompanyBLL {
-    public static void createCompany(Company company, CompanyOwner co){
-
-        company.setCompanyOwner(co);
-        Repository.getRepository().getCompanyOwners().put(co.getNIF(), co);
-        Repository.getRepository().getCompanyFromCompanyOwner().put(company.getCompanyOwner(), company);
-        Repository.getRepository().getCompaniesLocation().put(company.getLocation(), company);
-        Repository.getRepository().getCompanyOwners().get(co.getNIF()).getCompanies().add(company);
-        Repository.getRepository().getCompany().put(company.getNIF(), company);
-        System.out.println("Company created successfully!");
-        Repository.getRepository().serialize("users.repo");
-
-
-    }
-}*/
 

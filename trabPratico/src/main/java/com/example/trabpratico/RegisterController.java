@@ -113,26 +113,31 @@ public class RegisterController {
             alert.setTitle("Erro");
             alert.setHeaderText("Por favor, insira um username!");
             alert.show();
+            return;
         }else if (checkPassword(event) == false) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText("Por favor, insira uma password!");
                 alert.show();
+                return;
         }else if (checkUserType(event) == false) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Por favor, insira um tipo de utilizador!");
             alert.show();
+            return;
         }else if (checkNIF(event) == false){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("NIF errado. Por favor, insira novamente!");
             alert.show();
+            return;
         }else if (checkPhoneNumber(event) == false){
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Numero de telemovel errado. Por favor, insira novamente!");
             alert.show();
+            return;
 
         }
 

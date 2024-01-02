@@ -72,10 +72,9 @@ public class Main extends Application {
 
         System.out.println("Dados dos Clientes: ");
 
-        int i = 0;
         for (Customer aux : repo.getCustomers().values()) {
             System.out.println("----------------------------------------");
-            System.out.println("Cliente n: " + ++i);
+            System.out.println("Cliente n: " + aux.getId());
             System.out.println("Nome: " + aux.getUsername());
             System.out.println("NIF: " + aux.getNIF());
             System.out.println("Username: " + aux.getUsername());

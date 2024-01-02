@@ -12,7 +12,7 @@ public class    Repository implements Serializable {
     private Map<CompanyOwner, List<Company>> companiesMap = new HashMap<>();    // Mapa de <CompanyOwner, List<Company>>
     private Map<String, Company> companiesMapNIF = new HashMap<>();             // Mapa de <NIFOwner, Company>
     private Map<String, Company> companiesLocation = new HashMap<>();           // Mapa de <Location, Company>
-    private Map<Integer, Admin> adminsMap = new HashMap<>();                    // Mapa de <idAdmin, Admin>
+    private Map<String, Admin> adminsMap = new HashMap<>();                    // Mapa de <NIFAdmin, Admin>
     private Map<String, Employee> employeesMap= new HashMap<>();                // Mapa de <NIF, Employee>
     private Map<Clinic, List<Service>> servicesClinicMap = new HashMap<>();     // Mapa de <Clinic, List<Service>>
     private Map<String, Service> services = new HashMap<>();                    // Mapa de <clinicNIF, Service>
@@ -41,7 +41,7 @@ public class    Repository implements Serializable {
     public Map<String, Company> getCompaniesLocation(){
         return companiesLocation;
     }
-    public Map<Integer, Admin> getAdmins() {return adminsMap;}
+    public Map<String, Admin> getAdmins() {return adminsMap;}
     public Map<String, Employee> getEmployees() {return employeesMap;}
     public Map<String, Service> getServices() {return services;}
     public Map<Clinic, List<Service>> getServicesClinicMap(){return servicesClinicMap;}
