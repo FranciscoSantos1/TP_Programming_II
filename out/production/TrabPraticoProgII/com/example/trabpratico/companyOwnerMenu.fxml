@@ -38,12 +38,27 @@
                     </font>
                 </Button>
                 <Button fx:id="goBack" layoutX="558.0" layoutY="460.0" mnemonicParsing="false" onAction="#goBack" prefHeight="26.0" prefWidth="128.0" text="Terminar sessão" />
-            <Button fx:id="listCompanies" layoutX="84.0" layoutY="304.0" mnemonicParsing="false" onAction="#listCompanies" prefHeight="50.0" prefWidth="200.0" text="Listar empresas">
+            <Button fx:id="listCompanies" layoutX="342.0" layoutY="109.0" mnemonicParsing="false" onAction="#listCompanies" prefHeight="50.0" prefWidth="200.0" text="Listar empresas">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button fx:id="addService" layoutX="84.0" layoutY="365.0" mnemonicParsing="false" onAction="#createService" prefHeight="50.0" prefWidth="200.0" text="Adicionar Serviço">
+            <Button fx:id="addService" layoutX="84.0" layoutY="301.0" mnemonicParsing="false" onAction="#createService" prefHeight="50.0" prefWidth="200.0" text="Adicionar Serviço">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="listClinics" layoutX="342.0" layoutY="172.0" mnemonicParsing="false" onAction="#listClinics" prefHeight="50.0" prefWidth="200.0" text="Listar clinicas">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="listEmployees" layoutX="342.0" layoutY="237.0" mnemonicParsing="false" onAction="#listEmployees" prefHeight="50.0" prefWidth="200.0" text="Listar funcionários">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Button fx:id="listServices" layoutX="342.0" layoutY="301.0" mnemonicParsing="false" onAction="#listServices" prefHeight="50.0" prefWidth="200.0" text="Listar serviços">
                <font>
                   <Font size="14.0" />
                </font>

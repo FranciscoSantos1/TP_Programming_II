@@ -31,6 +31,18 @@ public class CompanyOwnerMenuController {
     private Button addService;
 
     @FXML
+    private Button createService;
+
+    @FXML
+    private Button listClinics;
+
+    @FXML
+    private Button listEmployees;
+
+    @FXML
+    private Button listServices;
+
+    @FXML
     void goBack(javafx.event.ActionEvent ActionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.getButtonTypes().remove(ButtonType.OK);
@@ -139,4 +151,52 @@ public class CompanyOwnerMenuController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void listClinics(javafx.event.ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/listClinicsByCompanyOwner.fxml"));
+            Scene regCena = new Scene (root);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("Lista de Clínicas");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void listEmployees(javafx.event.ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/listEmployeesByCompanyOwner.fxml"));
+            Scene regCena = new Scene (root);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("Lista de Funcionários");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    @FXML
+    void listServices(javafx.event.ActionEvent event) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/listServicesByCompanyOwner.fxml"));
+            Scene regCena = new Scene (root);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.setScene(regCena);
+            stage.setTitle("Lista de Serviços");
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
+
 }
