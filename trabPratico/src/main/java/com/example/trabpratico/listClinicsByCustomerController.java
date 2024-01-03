@@ -53,46 +53,7 @@ public class listClinicsByCustomerController {
         }
     }
 
-    /*@FXML
-    public void initialize() {
-        ClinicNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
-        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-        NIFColumn.setCellValueFactory(new PropertyValueFactory<>("NIF"));
-        phoneNumberColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-        CompanyOwnerNameColumn.setCellValueFactory(new PropertyValueFactory<>("companyOwnerName"));
 
-        List<Clinic> clinicList = new ArrayList<>();
-
-        CompanyOwner companyOwner = SessionData.getLoggedCompanyOwner();
-
-        Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
-
-        for (CompanyOwner co : repo.getCompanyFromCompanyOwner().keySet()) {
-            if (companyOwner.getUsername().equals(co.getUsername())) {
-                try {
-                    Object value = repo.getClinicsPerCompanyOner();
-
-                    if (value instanceof List) {
-                        List<Clinic> clinics = (List<Clinic>) value;
-                        System.out.println(repo.getCompanyFromCompanyOwner().get(co).size());
-
-                        for (Clinic c : clinics) {
-                            clinicList.add(c);
-                        }
-
-                    }
-
-                    ObservableList<Clinic> observableList = FXCollections.observableArrayList(clinicList);
-
-                    clinicsTable.setItems(observableList);
-                } catch (ClassCastException e) {
-                    // Handle the exception (e.g., log it or take appropriate action)
-                    e.printStackTrace();
-                }
-            }
-        }
-    }*/
 
     @FXML
     public void initialize() {

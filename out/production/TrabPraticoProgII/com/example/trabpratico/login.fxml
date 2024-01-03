@@ -16,7 +16,7 @@
          <children>
             <ImageView fitHeight="324.0" fitWidth="274.0" layoutX="52.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../Users/franc/Downloads/dentalcare.png" />
+                  <Image url="@../../../dentalcare.png" />
                </image>
             </ImageView>
             <Label layoutX="120.0" layoutY="281.0" text="Clínica">

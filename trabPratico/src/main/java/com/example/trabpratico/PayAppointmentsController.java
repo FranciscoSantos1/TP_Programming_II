@@ -61,31 +61,6 @@ public class PayAppointmentsController {
         }
     }
 
-    /*@FXML
-    public void initialize() {
-        AppointmentIdColumn.setCellValueFactory(new PropertyValueFactory<>("idConsulta"));
-        AppointmentStateColumn.setCellValueFactory(new PropertyValueFactory<>("state"));
-        ClinicColumn.setCellValueFactory(new PropertyValueFactory<>("clinic"));
-        DateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        EmployeeColumn.setCellValueFactory(new PropertyValueFactory<>("employee"));
-        TotalValueColumn.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
-
-        List<Appointment> appointments = new ArrayList<>();
-
-        for(List<Appointment> apps : Repository.getRepository().getAppointments().values()){
-            for(Appointment aux : apps) {
-                if(aux.getState().equals(AppointmentState.PROCESSADA)){
-                    appointments.add(aux);
-                }
-
-            }
-
-        }
-
-        ObservableList<Appointment> observableList = FXCollections.observableArrayList();
-        appointmentsTable.setItems(observableList);
-
-    }*/
 
     @FXML
     public void initialize() {
@@ -117,18 +92,16 @@ public class PayAppointmentsController {
         Appointment selectedAppointment = appointmentsTable.getSelectionModel().getSelectedItem();
 
         if (selectedAppointment != null) {
-            // Confirm payment with the user
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to mark this appointment as paid?", ButtonType.YES, ButtonType.NO);
             confirmationAlert.showAndWait();
 
             if (confirmationAlert.getResult() == ButtonType.YES) {
-                // Update the state of the selected appointment to PAGO
+
                 selectedAppointment.setState(AppointmentState.PAGA  );
-                // Refresh the table or update the UI as needed
                 appointmentsTable.getItems().remove(selectedAppointment);
             }
         } else {
-            // Inform the user that no appointment is selected
+
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aviso");
             alert.setHeaderText("Consulta nao selecionada");

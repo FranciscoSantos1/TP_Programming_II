@@ -96,7 +96,6 @@ public class ManageAppointmentsByAdminController {
         repository.deserialize("users.repo");
 
         if (selectedAppointment != null) {
-            // Confirm payment with the user
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION, "Apos clicar sim, a consulta selecionada vai para o estado cancelada. Quer continuar?", ButtonType.YES, ButtonType.NO);
             confirmationAlert.showAndWait();
             Alert alert = new Alert(Alert.AlertType.WARNING, "A consulta selecionada ja esta cancelada", ButtonType.OK);

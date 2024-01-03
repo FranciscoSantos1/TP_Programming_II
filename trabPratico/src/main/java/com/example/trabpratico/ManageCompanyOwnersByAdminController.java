@@ -73,7 +73,7 @@ public class ManageCompanyOwnersByAdminController {
             CompanyOwner companyOwner = cellData.getValue();
             List<Clinic> clinics = Repository.getRepository().getClinicsPerCompanyOwner().get(companyOwner.getNIF());
 
-            // Check if clinics is not null before getting the size
+
             int clinicsNumber = (clinics != null) ? clinics.size() : 0;
 
             return new SimpleStringProperty(String.valueOf(clinicsNumber));
@@ -112,7 +112,7 @@ public class ManageCompanyOwnersByAdminController {
             if (alert.getResult().getText().equals("OK")) {
                 List<Company> companies = repository.getCompanyFromCompanyOwner().get(selectedCompanyOwner);
 
-                // Check if companies is not null before iterating over it
+
                 if (companies != null) {
                     for (Company company : new ArrayList<>(companies)) {
                         List<Clinic> clinics = repository.getCompanieClinicsMap().get(company);

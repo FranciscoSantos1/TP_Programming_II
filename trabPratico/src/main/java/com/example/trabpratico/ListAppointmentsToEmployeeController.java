@@ -62,31 +62,6 @@ public class ListAppointmentsToEmployeeController {
         }
     }
 
-    /*@FXML
-    public void initialize() {
-        AppointmentIdColumn.setCellValueFactory(new PropertyValueFactory<>("idConsulta"));
-        AppointmentStateColumn.setCellValueFactory(new PropertyValueFactory<>("state"));
-        ClinicColumn.setCellValueFactory(new PropertyValueFactory<>("clinic"));
-        DateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-        EmployeeColumn.setCellValueFactory(new PropertyValueFactory<>("employee"));
-        TotalValueColumn.setCellValueFactory(new PropertyValueFactory<>("totalValue"));
-
-        List<Appointment> appointments = new ArrayList<>();
-
-        for(List<Appointment> apps : Repository.getRepository().getAppointments().values()){
-            for(Appointment aux : apps) {
-                if(aux.getState().equals(AppointmentState.PROCESSADA)){
-                    appointments.add(aux);
-                }
-
-            }
-
-        }
-
-        ObservableList<Appointment> observableList = FXCollections.observableArrayList();
-        appointmentsTable.setItems(observableList);
-
-    }*/
 
     @FXML
     public void initialize() {

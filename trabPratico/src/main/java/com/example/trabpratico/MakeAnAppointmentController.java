@@ -145,16 +145,6 @@ public class MakeAnAppointmentController {
         ObservableList<String> clinics = FXCollections.observableArrayList(clinicsNames);
         clinicChoiceBox.setItems(clinics);
 
-
-
-        /*for(Employee : getSelectedClinic().getEmployees()){
-            employeesNames.add(employee.getFullName());
-        }
-
-        ObservableList<String> employees = FXCollections.observableArrayList(employeesNames);
-        employeeChoiceBox.setItems(employees);*/
-
-
     }
 
     @FXML
@@ -183,20 +173,6 @@ public class MakeAnAppointmentController {
         return service;
     }
 
-    /*@FXML
-    public void updatePriceField() {
-        Service service = getSelectedService();
-        System.out.println("Selected Service: " + service.getServiceName());
-        for (List<Service> serviceList : Repository.getRepository().getServicesClinicMap().values()) {
-            for (Service service1 : serviceList) {
-                if (service1.getServiceName().equals(serviceChoiceBox.getValue())) {
-                    service = service1;
-                }
-            }
-        }
-        priceField.setText(String.valueOf(service.getServicePrice()));
-        priceField.setVisible(true);
-    }*/
 
     @FXML
     public void updatePriceField() {
@@ -206,7 +182,6 @@ public class MakeAnAppointmentController {
             priceField.setText(String.valueOf(service.getServicePrice()));
             priceField.setVisible(true);
         } else {
-            // Handle the case where the selected service is null
             System.out.println("Selected Service is null.");
         }
     }
@@ -214,10 +189,10 @@ public class MakeAnAppointmentController {
 
     @FXML
     private void updateEmployeeChoiceBox() {
-        System.out.println("updateEmployeeChoiceBox called"); // Check if this line gets printed
+        System.out.println("updateEmployeeChoiceBox called");
 
         Clinic selectedClinic = getSelectedClinic();
-        System.out.println("Selected Clinic: " + selectedClinic); // Print selected clinic information
+        System.out.println("Selected Clinic: " + selectedClinic);
 
         if (selectedClinic != null) {
             List<String> employeesNames = new ArrayList<>();

@@ -106,19 +106,7 @@ public class LoginController {
                     }
                 }
             }
-            /*for (Employee e : repo.getEmployees().values()) {
-                if (usernameField.getText().equalsIgnoreCase(e.getUsername()) && passwordField.getText().equals(e.getPassword())) {
-                    sd.loggedEmployee = e;
-                    found = true;
-                    System.out.println("Login com Sucesso!");
-                    Parent root = FXMLLoader.load(getClass().getResource("/com/example/trabpratico/EmployeeMenu.fxml"));
-                    Scene regCena = new Scene(root);
-                    Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-                    stage.setScene(regCena);
-                    stage.setTitle("Menu Funcionario");
-                    stage.show();
-                }
-            }*/
+
             if (!found) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
