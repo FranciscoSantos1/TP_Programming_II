@@ -65,7 +65,7 @@ public class ManageAppointmentsByAdminController {
     public void initialize() {
         AppointmentBLL.updateAppointmentStates();
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
         Employee employee = SessionData.getLoggedEmployee();
 
         AppointmentIdColumn.setCellValueFactory(new PropertyValueFactory<>("idConsulta"));
@@ -93,7 +93,7 @@ public class ManageAppointmentsByAdminController {
     void cancelAppointment(javafx.event.ActionEvent ActionEvent) {
         Appointment selectedAppointment = appointmentsTable.getSelectionModel().getSelectedItem();
         Repository repository = Repository.getRepository();
-        repository.deserialize("users.repo");
+        repository.deserialize("userdata.repo");
 
         if (selectedAppointment != null) {
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION, "Apos clicar sim, a consulta selecionada vai para o estado cancelada. Quer continuar?", ButtonType.YES, ButtonType.NO);

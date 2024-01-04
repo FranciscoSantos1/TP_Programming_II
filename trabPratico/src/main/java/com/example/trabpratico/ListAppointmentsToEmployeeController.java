@@ -67,7 +67,7 @@ public class ListAppointmentsToEmployeeController {
     public void initialize() {
         AppointmentBLL.updateAppointmentStates();
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
         Employee employee = SessionData.getLoggedEmployee();
 
         AppointmentIdColumn.setCellValueFactory(new PropertyValueFactory<>("idConsulta"));

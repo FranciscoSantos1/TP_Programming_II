@@ -21,6 +21,6 @@ public class EmployeeBLL {
 //        clinic.getEmployees().add(employee);
 
         System.out.println("Funcionário criado com sucesso!!!");
-        Repository.getRepository().serialize("users.repo");
+        Repository.getRepository().serialize("userdata.repo");
     }
 }

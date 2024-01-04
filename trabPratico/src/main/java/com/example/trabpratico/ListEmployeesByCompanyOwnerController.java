@@ -60,7 +60,7 @@ public class ListEmployeesByCompanyOwnerController {
     @FXML
     public void initialize() {
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
         SessionData sessionData = new SessionData();
         CompanyOwner companyOwner = sessionData.loggedCompanyOwner;
 

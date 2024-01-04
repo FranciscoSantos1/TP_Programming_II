@@ -100,7 +100,7 @@ public class ManageCompanyOwnersByAdminController {
     void deleteCompanyOwner(javafx.event.ActionEvent event) {
         CompanyOwner selectedCompanyOwner = companyOwnerTableView.getSelectionModel().getSelectedItem();
         Repository repository = Repository.getRepository();
-        repository.deserialize("users.repo");
+        repository.deserialize("userdata.repo");
 
         if (selectedCompanyOwner != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -130,8 +130,8 @@ public class ManageCompanyOwnersByAdminController {
                 }
 
                 repository.getCompanyOwners().remove(selectedCompanyOwner.getNIF());
-                repository.serialize("users.repo");
-                repository.deserialize("users.repo");
+                repository.serialize("userdata.repo");
+                repository.deserialize("userdata.repo");
 
                 companyOwnerTableView.getItems().remove(selectedCompanyOwner);
             }

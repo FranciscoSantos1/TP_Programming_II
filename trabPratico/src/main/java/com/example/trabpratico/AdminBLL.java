@@ -3,6 +3,6 @@ public class AdminBLL {
         Repository.getRepository().getAdmins().put(admin.getNIF(), admin);
 
         System.out.println("Admin created successfully!");
-        Repository.getRepository().serialize("users.repo");
+        Repository.getRepository().serialize("userdata.repo");
     }
 }

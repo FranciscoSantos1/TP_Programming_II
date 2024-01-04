@@ -71,7 +71,7 @@ public class listCompaniesByCompanyOwnerController {
         CompanyOwner companyOwner = SessionData.getLoggedCompanyOwner();
 
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
 
         for (CompanyOwner co : repo.getCompanyFromCompanyOwner().keySet()) {
             if (companyOwner.getUsername().equals(co.getUsername())) {

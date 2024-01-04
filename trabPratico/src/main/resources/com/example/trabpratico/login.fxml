@@ -29,6 +29,8 @@
                   <Font size="48.0" />
                </font>
             </Label>
+            <Label layoutX="104.0" layoutY="431.0" text="Francisco Santos Nº 29375" />
+            <Label layoutX="112.0" layoutY="449.0" text="Andre Vargas Nº 29182" />
          </children>
       </AnchorPane>
    </left>

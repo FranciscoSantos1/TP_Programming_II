@@ -3,6 +3,6 @@ public class CompanyOwnerBLL {
 
         Repository.getRepository().getCompanyOwners().put(companyOwner.getNIF(), companyOwner);
         System.out.println("Company owner created successfully!");
-        Repository.getRepository().serialize("users.repo");
+        Repository.getRepository().serialize("userdata.repo");
     }
 }

@@ -64,7 +64,7 @@ public class ManageCustomersByAdminController {
     @FXML
     public void initialize() {
         Repository repository = Repository.getRepository();
-        repository.deserialize("users.repo");
+        repository.deserialize("userdata.repo");
         usernameColumn.setCellValueFactory(new PropertyValueFactory<>("username"));
         fullnameColumn.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
@@ -111,7 +111,7 @@ public class ManageCustomersByAdminController {
                     }
                 }
 
-                repository.serialize("users.repo");
+                repository.serialize("userdata.repo");
                 customersTable.getItems().remove(customer);
             }
         } else{

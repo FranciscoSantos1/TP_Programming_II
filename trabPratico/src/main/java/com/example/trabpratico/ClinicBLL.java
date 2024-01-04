@@ -7,7 +7,7 @@ public class ClinicBLL {
         clinic.setCompany(company);
 
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
 
         Map<String, List<Clinic>> clinicsPerCompanyOwner = repo.getClinicsPerCompanyOwner();
 
@@ -32,6 +32,6 @@ public class ClinicBLL {
 
         System.out.println("Clinic created successfully!");
 
-        repo.serialize("users.repo");
+        repo.serialize("userdata.repo");
     }
 }

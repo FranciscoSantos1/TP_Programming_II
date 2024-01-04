@@ -94,7 +94,7 @@ public class CreateAdminController {
     @FXML
     public boolean checkUsername(javafx.event.ActionEvent actionEvent) {
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
         if (usernameField.getText().isEmpty() || repo.getCustomers().values().equals(usernameField.getText()) || repo.getCompanyOwners().values().equals(usernameField.getText()) || repo.getAdmins().values().equals(usernameField.getText()) || repo.getEmployees().values().equals(usernameField.getText())) {
             usernameField.setStyle("-fx-border-color: red");
             return false;

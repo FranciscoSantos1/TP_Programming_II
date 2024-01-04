@@ -68,7 +68,7 @@ public class CreateEmployeeController {
 
         Repository repo = Repository.getRepository();
         CompanyOwner co = SessionData.getLoggedCompanyOwner();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
         String coNIF = SessionData.loggedCompanyOwner.getNIF();
 
         List<Clinic> clinics = repo.getClinicsPerCompanyOwner().get(coNIF);
@@ -126,7 +126,7 @@ public class CreateEmployeeController {
     private Clinic findClinic(String clinicName) {
         String co = SessionData.loggedCompanyOwner.getNIF();
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
 
         List<Clinic> clinics = repo.getClinicsPerCompanyOwner().get(co);
 

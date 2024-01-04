@@ -24,7 +24,7 @@ public class AppointmentBLL {
 
         Repository.getRepository().getCustomers().get(customer.getNIF()).getAppointments().add(appointment);
         System.out.println("Appointment created successfully!");
-        Repository.getRepository().serialize("users.repo");
+        Repository.getRepository().serialize("userdata.repo");
     }
 
     public static void updateAppointmentStates() {
@@ -43,6 +43,6 @@ public class AppointmentBLL {
             }
         }
 
-        Repository.getRepository().serialize("users.repo");
+        Repository.getRepository().serialize("userdata.repo");
     }
 }

@@ -20,6 +20,6 @@ public class ServiceBLL {
         clinic.getServices().put(service, service.getServicePrice());
         Repository.getRepository().getServices().put(service.getClinic().getNIF(), service);
         System.out.println("Serviço criado com sucesso!!!");
-        Repository.getRepository().serialize("users.repo");
+        Repository.getRepository().serialize("userdata.repo");
     }
 }

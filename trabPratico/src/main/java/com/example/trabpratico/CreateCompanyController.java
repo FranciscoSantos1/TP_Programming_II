@@ -55,7 +55,7 @@ public class CreateCompanyController {
             CompanyOwner co = SessionData.getLoggedCompanyOwner();
 
             Repository repo = new Repository();
-            repo.deserialize("users.repo");
+            repo.deserialize("userdata.repo");
 
             company.setName(companyNameField.getText());
             company.setAddress(addressField.getText());

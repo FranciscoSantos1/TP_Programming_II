@@ -30,7 +30,7 @@ public class CompanyBLL {
             companyMap.put(co.getNIF(), company);
             Repository.getRepository().getCompanyOwners().put(co.getNIF(), co);
             System.out.println("Company created successfully!");
-            Repository.getRepository().serialize("users.repo");
+            Repository.getRepository().serialize("userdata.repo");
 
 
 

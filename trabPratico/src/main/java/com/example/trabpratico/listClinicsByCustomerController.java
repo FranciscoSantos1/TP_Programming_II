@@ -58,7 +58,7 @@ public class listClinicsByCustomerController {
     @FXML
     public void initialize() {
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
         ClinicNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
         NIFColumn.setCellValueFactory(new PropertyValueFactory<>("NIF"));

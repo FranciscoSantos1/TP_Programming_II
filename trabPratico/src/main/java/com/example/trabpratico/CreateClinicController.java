@@ -61,7 +61,7 @@ public class CreateClinicController {
     @FXML
     public void initialize() {
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
         CompanyOwner co = new CompanyOwner();
         co = SessionData.loggedCompanyOwner;
 
@@ -91,7 +91,7 @@ public class CreateClinicController {
         CompanyOwner co = new CompanyOwner();
         co = SessionData.getLoggedCompanyOwner();
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
         List<String> companiesNames = new ArrayList<>();
 
 

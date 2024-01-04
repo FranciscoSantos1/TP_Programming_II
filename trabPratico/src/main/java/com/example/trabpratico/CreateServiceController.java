@@ -51,7 +51,7 @@ public class CreateServiceController {
     public void initialize(){
 
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
         String co = SessionData.loggedCompanyOwner.getNIF();
 
 
@@ -110,7 +110,7 @@ public class CreateServiceController {
     private Clinic findClinic(String clinicName) {
         String co = SessionData.loggedCompanyOwner.getNIF();
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
 
         List<Clinic> clinics = repo.getClinicsPerCompanyOwner().get(co);
 

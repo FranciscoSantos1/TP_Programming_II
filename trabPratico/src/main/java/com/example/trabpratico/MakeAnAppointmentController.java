@@ -132,7 +132,7 @@ public class MakeAnAppointmentController {
     @FXML
     public void initialize() {
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
         List<String> clinicsNames = new ArrayList<>();
         List<String> employeesNames = new ArrayList<>();
 

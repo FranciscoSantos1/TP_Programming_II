@@ -21,7 +21,7 @@ public class Main extends Application {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException {
         Repository repo;
-        Repository.deserialize("users.repo");
+        Repository.deserialize("userdata.repo");
         repo = Repository.getRepository();
 
         if (repo.getAdmins().isEmpty()) {

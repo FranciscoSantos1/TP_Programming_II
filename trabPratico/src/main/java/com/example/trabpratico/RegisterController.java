@@ -158,7 +158,7 @@ public class RegisterController {
     @FXML
     public boolean checkUsername(javafx.event.ActionEvent actionEvent) {
         Repository repo = Repository.getRepository();
-        repo.deserialize("users.repo");
+        repo.deserialize("userdata.repo");
 
         String enteredUsername = usernameField.getText().trim();
 
