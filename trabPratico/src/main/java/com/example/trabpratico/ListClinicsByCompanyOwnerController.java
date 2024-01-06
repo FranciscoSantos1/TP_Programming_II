@@ -58,6 +58,9 @@ public class ListClinicsByCompanyOwnerController {
     @FXML
     public void initialize() {
         Repository repo = Repository.getRepository();
+        repo.deserialize("userdata.repo");
+
+        CompanyOwner co = SessionData.getLoggedCompanyOwner();
 
         ClinicNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -78,7 +81,9 @@ public class ListClinicsByCompanyOwnerController {
         Map<Company, List<Clinic>> companyClinicsMap = repo.getCompanieClinicsMap();
 
         for (List<Clinic> clinics : companyClinicsMap.values()) {
-            clinicList.addAll(clinics);
+            for(Clinic clinic : clinics)
+                if(clinic.getCompany().getCompanyOwner().getUsername().equals(co.getUsername()))
+                    clinicList.addAll(clinics);
         }
 
         ObservableList<Clinic> observableList = FXCollections.observableArrayList(clinicList);

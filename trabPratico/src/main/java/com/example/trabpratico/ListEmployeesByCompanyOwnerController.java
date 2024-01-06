@@ -19,7 +19,7 @@ import java.util.Map;
 public class ListEmployeesByCompanyOwnerController {
 
     @FXML
-    private TableColumn<Employee, String> CompanyOwnerNameColumn;
+    private TableColumn<Employee, String> ClinicNameColumn;
 
     @FXML
     private TableColumn<Employee, String> NIFColumn;
@@ -79,10 +79,10 @@ public class ListEmployeesByCompanyOwnerController {
         // Populate the TableView
         ObservableList<Employee> observableList = FXCollections.observableArrayList(employees);
 
-        CompanyOwnerNameColumn.setCellValueFactory(cellData -> {
+        ClinicNameColumn.setCellValueFactory(cellData -> {
             Employee employee = cellData.getValue();
             if (employee.getClinic() != null) {
-                return new SimpleStringProperty(employee.getClinic().getCompany().getCompanyOwner().getUsername());
+                return new SimpleStringProperty(employee.getClinic().getName());
             } else {
                 return new SimpleStringProperty("");
             }

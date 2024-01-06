@@ -30,7 +30,7 @@
                 <TableColumn fx:id="UserNameColumn" prefWidth="75.0" text="Username" />
                 <TableColumn fx:id="NIFColumn" prefWidth="75.0" text="NIF" />
                   <TableColumn fx:id="phoneNumberColumn" prefWidth="75.0" text="Telemovel" />
-                  <TableColumn fx:id="CompanyOwnerNameColumn" prefWidth="114.0" text="Clinica" />
+                  <TableColumn fx:id="ClinicNameColumn" prefWidth="114.0" text="Clinica" />
                   <TableColumn fx:id="addressColumn" prefWidth="251.0" text="Morada" />
               </columns>
             </TableView>
